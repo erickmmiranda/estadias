@@ -9,11 +9,10 @@ providedIn: 'root'
 
 export class ApiService {
     redirectUrl!: string;
-baseUrl:string = "http://localhost/angular-admin/php";
+baseUrl:string = "http://localhost/estadias/php";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 constructor(private httpClient : HttpClient) { }
 public userlogin(username: any, password: any) {
-alert(username)
 return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
 .pipe(map(Users => {
 this.setToken(Users[0].name);
@@ -22,11 +21,11 @@ return Users;
 }));
 }
 
-public userregistration(name: any,email: any,pwd: any) {
-return this.httpClient.post<any>(this.baseUrl + '/register.php', { name,email, pwd })
-.pipe(map(Users => {
-return Users;
-}));
+public userregistration(nombre: any,email: any,password: any, apellidos: any, num_nomina: any, tipo: any) {
+    return this.httpClient.post<any>(this.baseUrl + '/register.php', { nombre,email, password, apellidos, num_nomina, tipo })
+    .pipe(map(Users => {
+    return Users;
+    }));
 }
 
 //token

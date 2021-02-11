@@ -4,14 +4,16 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-//import { AuthguardGuard } from './authguard.guard';
+import { AuthguardGuard } from './authguard.guard';
+import { MenuUsuariosComponent } from './menu-usuarios/menu-usuarios.component';
 
 const routes: Routes = [
 { path: '', component: LoginComponent },
 { path: 'login', component: LoginComponent },
+{ path: 'menu-usuario', component: MenuUsuariosComponent },
 { path: 'home', component: HomeComponent },
 { path: 'registration', component: RegisterComponent },
-//{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] }
+{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] }
 
 ]
 

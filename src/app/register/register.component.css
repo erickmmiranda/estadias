@@ -1,0 +1,12 @@
+input:required {
+    outline: 1px solid red;
+}
+
+.validar {
+    /* otras propiedades */
+    color: red;
+}
+
+.campoError {
+    border: 1px solid red;
+}

@@ -1,0 +1,16 @@
+/*Mostraremos los campos requeridos de color amarillo*/
+
+.validar {
+    /* otras propiedades */
+    color: red;
+}
+
+.vpassword {
+    /* otras propiedades */
+    border: 2px solid red;
+}
+
+.vemail {
+    /* otras propiedades */
+    border: 2px solid red;
+}

@@ -1,26 +1,57 @@
-<h2 class="text-center">Registration</h2>
+<br>
+<h2 class="text-center">Registrar usuarios</h2>
 <div class="row">
-<div class="col-md-3">
-</div>
-<div class="col-md-6 col-md-offset-3">
-<div class="jumbotron">
-<form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
-<div class="form-group">
-<label for="name">Name</label>
-<input type="text" name="name" formControlName="name" autocomplete="off" class="form-control input-sm" placeholder="Name">
-</div>
-<div class="form-group">
-<label for="email">Email</label>
-<input type="email" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email">
-</div>
-<div class="form-group">
-<label for="Password">Password</label>
-<input type="password" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm" placeholder="Password">
-</div>
-<button type="submit" class="btn btn-success" >Register</button>
-</form>
-</div>
-</div>
-<div class="col-md-3">
-</div>
+    <div class="col-md-3">
+    </div>
+    <div class="col-md-6 col-md-offset-3">
+        <div class="jumbotron">
+            <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off">
+                <div class="form-group">
+                    <label for="nombre">Nombre</label>
+                    <input type="text" *ngIf="campo_n" name="nombre" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre">
+                    <input type="text" *ngIf="validar_n" name="nombre" formControlName="nombre" autocomplete="off" class="form-control input-sm campoError" placeholder="Nombre">
+                    <p class="validar" *ngIf="validar_n">Rellena este campo</p>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" *ngIf="campo_a" name="apellidos" formControlName="apellidos" autocomplete="off" class="form-control input-sm" placeholder="Apellidos">
+                    <input type="text" *ngIf="validar_a" name="apellidos" formControlName="apellidos" autocomplete="off" class="form-control input-sm campoError" placeholder="Apellidos">
+                    <p class="validar" *ngIf="validar_a">Rellena este campo</p>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" *ngIf="campo_e" name="email" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email">
+                    <input type="email" *ngIf="validar_e" name="email" formControlName="email" autocomplete="off" class="form-control input-sm campoError" placeholder="Email">
+                    <p class="validar" *ngIf="validar_e">Rellena este campo</p>
+                </div>
+                <div class="form-group">
+                    <label for="Password">Password</label>
+                    <input type="password" *ngIf="campo_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm" placeholder="Password">
+                    <input type="password" *ngIf="validar_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm campoError" placeholder="Password">
+                    <p class="validar" *ngIf="validar_p">Rellena este campo</p>
+                </div>
+                <div class="form-group">
+                    <label for="num_nomina">Num. Nomina</label>
+                    <input type="number" *ngIf="campo_num" name="num_nomina" formControlName="num_nomina" autocomplete="off" class="form-control input-sm" placeholder="Num. Nomina">
+                    <input type="number" *ngIf="validar_num" name="num_nomina" formControlName="num_nomina" autocomplete="off" class="form-control input-sm campoError" placeholder="Num. Nomina">
+                    <p class="validar" *ngIf="validar_num">Rellena este campo</p>
+                </div>
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select type="text" *ngIf="campo_t" name="tipo" formControlName="tipo" autocomplete="off" class="form-control input-sm" placeholder="Tipo">
+                        <option value="normal">Normal</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                    <select type="text" *ngIf="validar_t" name="tipo" formControlName="tipo" autocomplete="off" class="form-control input-sm campoError" placeholder="Tipo">
+                        <option value="normal">Normal</option>
+                        <option value="administrador">Administrador</option>
+                    </select>
+                    <p class="validar" *ngIf="validar_t">Rellena este campo</p>
+                </div>
+                <button type="submit" class="btn btn-success">Registrar</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-3">
+    </div>
 </div>

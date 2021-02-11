@@ -10,6 +10,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import {FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CarouselComponent } from './carousel/carousel.component';
+import { MenuUsuariosComponent } from './menu-usuarios/menu-usuarios.component';
+import { ViewUserComponent } from './view-user/view-user.component';
+import { ListUserComponent } from './list-user/list-user.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +21,11 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     LoginComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    CarouselComponent,
+    MenuUsuariosComponent,
+    ViewUserComponent,
+    ListUserComponent
   ],
   imports: [
     BrowserModule,
