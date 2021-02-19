@@ -1,1 +1,35 @@
-<p>view-user works!</p>
+<div class="container">
+    <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
+    <h2 class="text-center mt-2 mb-3">Lista de usuarios</h2>
+    <table class="table table-strip">
+        <tr class="bg-dark text-white">
+            <td style="visibility: hidden"> ID</td>
+            <td> Nombre </td>
+            <td> Apellidos </td>
+            <td> Correo </td>
+            <td class="text-center"> Num. Nomina </td>
+            <td> Tipo </td>
+            <td class="text-center"> Accion </td>
+
+        </tr>
+
+        <tr *ngFor="let user of this.users">
+            <td style="visibility: hidden">{{user.id}}</td>
+            <td>{{user.nombre}}</td>
+            <td>{{user.apellidos}}</td>
+            <td>{{user.email}}</td>
+            <td class="text-center">{{user.num_nomina}}</td>
+            <td>{{user.tipo |titlecase}}</td>
+            <td class="text-center">
+                <a href="javascript:void(0);" class="btn btn-warning" (click)="editUser(user)">Editar</a> /
+                <a href="javascript:void(0);" class="btn btn-danger" (click)="deleteUser(user)">Eliminar</a>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><a [routerLink]="['/registration']" class="btn btn-success btn-lg">Nuevo usuario</a></td>
+        </tr>
+    </table>
+
+
+</div>

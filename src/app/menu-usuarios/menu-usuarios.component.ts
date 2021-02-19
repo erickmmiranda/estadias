@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ApiService } from '../api.service';
 
 @Component({
   selector: 'app-menu-usuarios',
@@ -7,8 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-usuarios.component.css']
 })
 export class MenuUsuariosComponent implements OnInit {
-
-  constructor(private router: Router) { }
+  tipo: any;
+  constructor(private apiService : ApiService,private router: Router) { 
+                this.tipo = this.apiService.getTipo();
+                if(this.tipo != "administrador"){
+                  this.router.navigate(['dashboard']);
+                }
+  }
 
   ngOnInit(): void {
   }
@@ -23,7 +29,7 @@ export class MenuUsuariosComponent implements OnInit {
 
   verUsuarios()
   {
-    this.router.navigate( ['/view-user']);
+    this.router.navigate( ['/view']);
   }
 
 }

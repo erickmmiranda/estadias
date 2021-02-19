@@ -22,8 +22,11 @@ export class AuthguardGuard implements CanActivate {
         }
         
         this.dataService.redirectUrl = routeurl;
-        this.router.navigate(['/login'], {queryParams: { returnUrl: routeurl }} );
-        
-        
+        this.router.navigate(['/login']);
+
+        // Codigo para al momento de logout se guarde la ruta donde se encontraba el usuario
+        // y al momento de login regrese a la misma pagina donde se encontraba
+        // ", {queryParams: { returnUrl: routeurl }}"
+        // esto en el router.navigate de arriba , despues de los corchetes
     }
 }

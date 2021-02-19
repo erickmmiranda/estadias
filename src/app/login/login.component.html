@@ -9,7 +9,7 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" name="email" *ngIf="campo_e" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email">
-                    <input type="email" *ngIf="validar_e" name="email" formControlName="email" autocomplete="off" class="form-control input-sm vemail" placeholder="Email 2">
+                    <input type="email" *ngIf="validar_e" name="email" formControlName="email" autocomplete="off" class="form-control input-sm vemail" placeholder="Email">
                     <p class="validar" *ngIf="validar_e">Este campo es obligatorio</p>
                 </div>
                 <div class="form-group">
@@ -18,7 +18,7 @@
                     <input type="password" *ngIf="validar_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm vpassword" placeholder="Password" required>
                     <p class="validar" *ngIf="validar_p">Este campo es obligatorio</p>
                 </div>
-                <button type="submit" class="btn btn-success">Login</button>
+                <button type="submit" class="btn btn-success btn-block">Ingresar</button>
             </form>
         </div>
     </div>

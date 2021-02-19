@@ -11,6 +11,7 @@ styleUrls: ['./register.component.css']
 })
 
 export class RegisterComponent implements OnInit {
+    tipoU: any;
     validar_n: boolean = false;
     validar_a: boolean = false;
     validar_e: boolean = false;
@@ -27,14 +28,19 @@ export class RegisterComponent implements OnInit {
 
     angForm: FormGroup;
     constructor(private fb: FormBuilder,private dataService: ApiService,private router:Router) {
-    this.angForm = this.fb.group({
-    email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
-    password: ['', Validators.required],
-    nombre: ['', Validators.required],
-    apellidos: ['', Validators.required],
-    tipo: ['', Validators.required],
-    num_nomina: ['', Validators.required],
-    });
+        this.tipoU = this.dataService.getTipo();
+                if(this.tipoU != "administrador"){
+                  this.router.navigate(['dashboard']);
+                }
+        this.angForm = this.fb.group({
+        email: ['', [Validators.required,Validators.minLength(1), Validators.email]],
+        password: ['', Validators.required],
+        nombre: ['', Validators.required],
+        apellidos: ['', Validators.required],
+        tipo: ['', Validators.required],
+        num_nomina: ['', Validators.required],
+        });
+    
     }
     
     ngOnInit() {
@@ -92,7 +98,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
             data => {
-            this.router.navigate(['login']);
+            this.router.navigate(['view']);
             },
             
             error => {

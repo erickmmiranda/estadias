@@ -1,13 +1,26 @@
 export class Users {
-    public Id: number;
+    public id: number;
     public name: string;
-    public pwd:string;
+    public apellidos: string;
+    public passwrord:string;
     public email:string;
+    public num_nomina:number;
+    public tipo:string;
+
     
-    constructor(Id:number,name: string,pwd:string,email:string) {
-    this.Id = Id;
+    constructor(Id:number,
+                name: string,
+                apellidos: string,
+                passwrord:string,
+                email:string,
+                num_nomina:number,
+                tipo: string ) {
+    this.id = Id;
     this.name = name;
-    this.pwd = pwd;
+    this.apellidos = apellidos;
+    this.passwrord = passwrord;
     this.email = email;
+    this.num_nomina = num_nomina;
+    this.tipo = tipo;
     }
     }

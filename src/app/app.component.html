@@ -14,13 +14,13 @@
                 <a class="nav-link" *ngIf="logoutbtn" routerLink="registration" routerLinkActive="active">Registration</a>
             </li> -->
             <li class="nav-item">
-                <a class="nav-link" *ngIf="loginbtn" class="btn btn-danger" routerLink="login" routerLinkActive="active">Iniciar sesion</a>
+                <a class="nav-link" *ngIf="loginbtn" class="btn btn-primary" routerLink="login" routerLinkActive="active">Iniciar sesion</a>
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link" *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item mr-4">
-                <a class="nav-link" *ngIf="logoutbtn" routerLink="menu-usuario" routerLinkActive="active">Usuarios</a>
+                <a class="nav-link" *ngIf="administrador == 'administrador'" routerLink="menu-usuario" routerLinkActive="active">Usuarios</a>
             </li>
             <li class="nav-item">
                 <button type="button" *ngIf="logoutbtn" class="btn btn-block btn-danger" (click)="logout()">Cerrar sesion</button>

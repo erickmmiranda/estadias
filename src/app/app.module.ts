@@ -13,7 +13,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { CarouselComponent } from './carousel/carousel.component';
 import { MenuUsuariosComponent } from './menu-usuarios/menu-usuarios.component';
 import { ViewUserComponent } from './view-user/view-user.component';
-import { ListUserComponent } from './list-user/list-user.component';
+import { EditarComponent } from './editar/editar.component';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { ListUserComponent } from './list-user/list-user.component';
     CarouselComponent,
     MenuUsuariosComponent,
     ViewUserComponent,
-    ListUserComponent
+    EditarComponent,
   ],
   imports: [
     BrowserModule,
