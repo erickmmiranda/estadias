@@ -14,6 +14,12 @@ import { CarouselComponent } from './carousel/carousel.component';
 import { MenuUsuariosComponent } from './menu-usuarios/menu-usuarios.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { EditarComponent } from './editar/editar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UploadDocumentComponent } from './upload-document/upload-document.component';
+import { MenuDocumentComponent } from './menu-document/menu-document.component';
+import { ListDocumentComponent } from './list-document/list-document.component';
+import { ApiService } from './api.service';
+import { FiltroExtensionPipe } from './filtro-extension.pipe';
 
 
 @NgModule({
@@ -27,15 +33,22 @@ import { EditarComponent } from './editar/editar.component';
     MenuUsuariosComponent,
     ViewUserComponent,
     EditarComponent,
+    UploadDocumentComponent,
+    MenuDocumentComponent,
+    ListDocumentComponent,
+    FiltroExtensionPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
-  providers: [],
+  providers: [
+    ApiService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

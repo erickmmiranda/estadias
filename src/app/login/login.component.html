@@ -1,5 +1,6 @@
-<br><br>
+<br>
 <h2 class="text-center">Iniciar sesion</h2>
+<br>
 <div class="row">
     <div class="col-md-4">
     </div>
@@ -7,15 +8,30 @@
         <div class="jumbotron">
             <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off">
                 <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" name="email" *ngIf="campo_e" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email">
-                    <input type="email" *ngIf="validar_e" name="email" formControlName="email" autocomplete="off" class="form-control input-sm vemail" placeholder="Email">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <fa-icon [icon]="faUser"></fa-icon>
+                            </span>
+                        </div>
+                        <input type="email" name="email" *ngIf="campo_e" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email">
+                        <input type="email" *ngIf="validar_e" name="email" formControlName="email" autocomplete="off" class="form-control input-sm vemail" placeholder="Email">
+                    </div>
                     <p class="validar" *ngIf="validar_e">Este campo es obligatorio</p>
+
                 </div>
-                <div class="form-group">
-                    <label for="Password">Password</label>
-                    <input type="password" *ngIf="campo_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm" placeholder="Password" required>
-                    <input type="password" *ngIf="validar_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm vpassword" placeholder="Password" required>
+                <div class="form-group mb-4">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">
+                                <fa-icon [icon]="faKey"></fa-icon>
+                            </span>
+                        </div>
+                        <input type="password" *ngIf="campo_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm" placeholder="Password" required>
+                        <input type="password" *ngIf="validar_p" name="Password" formControlName="password" autocomplete="off" class="form-control input-sm vpassword" placeholder="Password" required>
+                    </div>
                     <p class="validar" *ngIf="validar_p">Este campo es obligatorio</p>
                 </div>
                 <button type="submit" class="btn btn-success btn-block">Ingresar</button>

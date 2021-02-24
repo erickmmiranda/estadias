@@ -1,0 +1,43 @@
+<div class="container">
+    <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
+    <h2 class="text-center mt-2 mb-3">Lista de documentos</h2>
+    <table class="table">
+        <tr class="bg-dark text-white">
+            <td></td>
+            <td>Nombre </td>
+            <td>Tipo</td>
+            <td>Tamaño</td>
+            <td class="text-center">Accion</td>
+        </tr>
+
+        <tr *ngFor="let item of archivos">
+            <td></td>
+            <td>{{item.nombre}}</td>
+            <td>
+                <fa-icon [icon]="faPdf" *ngIf="item.tipo == 'pdf'" size="2x"></fa-icon>
+                <fa-icon [icon]="faPng" *ngIf="item.tipo == 'png'" size="2x"></fa-icon>
+                <fa-icon [icon]="faDocx" *ngIf="item.tipo == 'docx'" size="2x"></fa-icon>
+                <fa-icon [icon]="faZip" *ngIf="item.tipo == 'zip'" size="2x"></fa-icon>
+                <fa-icon [icon]="faPptx" *ngIf="item.tipo == 'pptx'" size="2x"></fa-icon>
+                <fa-icon [icon]="faJpg" *ngIf="item.tipo == 'jpg'" size="2x"></fa-icon> {{item.tipo}}</td>
+            <td>{{item.size}}</td>
+            <td class="text-center">
+                <a href="javascript:void(0);" class="btn btn-outline-warning">
+                    <fa-icon [icon]="faEdit"></fa-icon> Renombrar</a> /
+                <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(item)" [routerLink]="['/lis-document']">
+                    <fa-icon [icon]="faDelete"></fa-icon> Borrar</a> /
+                <a href="javascript:void(0);" class="btn btn-outline-success">
+                    <fa-icon [icon]="faDelete"></fa-icon> Validar</a>
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>
+                <a [routerLink]="['/upload-document']" class="btn btn-success btn-lg">
+                    <fa-icon [icon]="faAdd"></fa-icon> Subir documento</a>
+            </td>
+        </tr>
+    </table>
+
+
+</div>

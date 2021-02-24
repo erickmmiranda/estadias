@@ -4,10 +4,11 @@
     <table class="table table-strip">
         <tr class="bg-dark text-white">
             <td style="visibility: hidden"> ID</td>
-            <td> Nombre </td>
+            <td>Nombre</td>
             <td> Apellidos </td>
             <td> Correo </td>
             <td class="text-center"> Num. Nomina </td>
+            <td></td>
             <td> Tipo </td>
             <td class="text-center"> Accion </td>
 
@@ -19,15 +20,23 @@
             <td>{{user.apellidos}}</td>
             <td>{{user.email}}</td>
             <td class="text-center">{{user.num_nomina}}</td>
-            <td>{{user.tipo |titlecase}}</td>
+            <td>
+                <fa-icon [icon]="faAdmin" *ngIf="user.tipo == 'administrador'"></fa-icon>
+            </td>
+            <td>{{user.tipo | titlecase}}</td>
             <td class="text-center">
-                <a href="javascript:void(0);" class="btn btn-warning" (click)="editUser(user)">Editar</a> /
-                <a href="javascript:void(0);" class="btn btn-danger" (click)="deleteUser(user)">Eliminar</a>
+                <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="editUser(user)">
+                    <fa-icon [icon]="faEdit"></fa-icon> Editar</a> /
+                <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="deleteUser(user)">
+                    <fa-icon [icon]="faDelete"></fa-icon> Eliminar</a>
             </td>
         </tr>
         <tr>
             <td>&nbsp;</td>
-            <td><a [routerLink]="['/registration']" class="btn btn-success btn-lg">Nuevo usuario</a></td>
+            <td>
+                <a [routerLink]="['/registration']" class="btn btn-success btn-lg">
+                    <fa-icon [icon]="faAdd"></fa-icon> Nuevo usuario</a>
+            </td>
         </tr>
     </table>
 

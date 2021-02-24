@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faKey } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
 selector: 'app-login',
@@ -10,6 +13,8 @@ templateUrl: './login.component.html',
 styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    faUser = faUser;
+    faKey = faKey;
     validar_e : Boolean = false;
     validar_p : Boolean = false;
     campo_e : Boolean = true;
@@ -52,7 +57,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate([redirect]);
             },
             error => {
-            alert("User name or password is incorrect")
+            alert("Usuario o password incorrectos")
             });  
         }
       

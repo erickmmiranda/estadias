@@ -2,6 +2,10 @@ import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { Users } from './users';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+import { faFolder } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
 selector: 'app-root',
@@ -10,6 +14,10 @@ styleUrls: ['./app.component.css']
 })
 
 export class AppComponent {
+    faLogout = faSignOutAlt;
+    faUsers = faUsers;
+    faLogin = faSignInAlt;
+    faFolder = faFolder;
     loginbtn:boolean;
     logoutbtn:boolean;
     administrador: any;
@@ -19,8 +27,6 @@ export class AppComponent {
     dataService.getAdministrator.subscribe((administrador : string) => this.changeAdministrador(administrador));
     if(this.dataService.isLoggedIn())
     {
-
-        console.log("loggedin");
         this.administrador = this.dataService.getTipo();
         this.loginbtn=false;
         this.logoutbtn=true
@@ -30,7 +36,6 @@ export class AppComponent {
         this.loginbtn=true;
         this.logoutbtn=false
     }
-
     
     }
     
@@ -47,6 +52,7 @@ export class AppComponent {
     {
     this.dataService.deleteToken();
     this.dataService.deleteTipo();
+    this.dataService.deleteEmail();
     window.location.href = window.location.href;
     this.router.navigate( ['/login']);
     this.administrador = "";

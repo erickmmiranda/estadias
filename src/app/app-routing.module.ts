@@ -8,6 +8,9 @@ import { AuthguardGuard } from './authguard.guard';
 import { MenuUsuariosComponent } from './menu-usuarios/menu-usuarios.component';
 import { ViewUserComponent } from './view-user/view-user.component';
 import { EditarComponent } from './editar/editar.component';
+import { UploadDocumentComponent } from './upload-document/upload-document.component';
+import { MenuDocumentComponent } from './menu-document/menu-document.component';
+import { ListDocumentComponent } from './list-document/list-document.component';
 
 const routes: Routes = [
 { path: '', component: LoginComponent },
@@ -16,6 +19,9 @@ const routes: Routes = [
 { path: 'home', component: HomeComponent },
 { path: 'registration', component: RegisterComponent,canActivate: [AuthguardGuard]  },
 { path: 'view', component: ViewUserComponent,canActivate: [AuthguardGuard]  },
+{ path: 'upload-document', component: UploadDocumentComponent,canActivate: [AuthguardGuard]  },
+{ path: 'menu-document', component: MenuDocumentComponent,canActivate: [AuthguardGuard]  },
+{ path: 'list-document', component: ListDocumentComponent,canActivate: [AuthguardGuard]  },
 { path: 'edit/:id', component: EditarComponent, canActivate: [AuthguardGuard]  },
 { path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] }
 

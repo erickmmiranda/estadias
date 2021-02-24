@@ -3,7 +3,7 @@
         <div class="col-2"></div>
         <div class="col-8">
             <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
-            <h2 class="text-center mt-2 mb-5">Menu usuarios</h2>
+            <h2 class="text-center mt-2 mb-5">Menu documentos</h2>
         </div>
         <div class="col-2"></div>
     </div>
@@ -12,20 +12,20 @@
         <div class="col-4">
             <div class="card">
                 <span class="text-center mt-3">
-                    <fa-icon [icon]="faAddUsu" size="10x"></fa-icon>
+                    <fa-icon [icon]="faUpload" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="agregarU()" type="button" class="btn btn-success btn-block">Agregar Usuario</button>
+                    <button (click)="agregarD()" type="button" class="btn btn-success btn-block">Subir documento</button>
                 </div>
             </div>
         </div>
         <div class="col-4">
             <div class="card">
                 <span class="text-center mt-3">
-                    <fa-icon [icon]="faList" size="10x"></fa-icon>
+                    <fa-icon [icon]="faListDocument" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="verUsuarios()" type="button" class="btn btn-primary btn-block">Lista de usuarios</button>
+                    <button (click)="verDocumentos()" type="button" class="btn btn-primary btn-block">Lista de documentos</button>
                 </div>
             </div>
         </div>

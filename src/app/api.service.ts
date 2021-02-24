@@ -15,10 +15,13 @@ baseUrl:string = "http://localhost/estadias/php";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 @Output() getAdministrator: EventEmitter<any> = new EventEmitter();
 constructor(private httpClient : HttpClient) { }
+
+
 public userlogin(username: any, password: any) {
 return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
 .pipe(map(Users => {
 this.tipo = Users[0].tipo;
+this.setEmail(Users[0].email);
 this.setTipo(Users[0].tipo);
 this.setToken(Users[0].nombre);
 if(this.tipo == "administrator"){
@@ -33,7 +36,7 @@ return Users;
 
 }
 
-
+ /// Usuarios
 public userregistration(nombre: any,email: any,password: any, apellidos: any, num_nomina: any, tipo: any) {
     return this.httpClient.post<any>(this.baseUrl + '/register.php', {nombre,email, password, apellidos, num_nomina, tipo })
     .pipe(map(Users => {
@@ -52,6 +55,9 @@ public deleteUser(id : number){
 public getUserById(id : number){
     return this.httpClient.get<any>(this.baseUrl + '/getById.php?id=' + id);
 }
+public obtenerDocumentos(){
+    return this.httpClient.get<any>(this.baseUrl + '/leer-archivos.php');
+} 
 
 public updateUser(id :any, nombre: any,email: any,password: any, apellidos: any, num_nomina: any, tipo: any) {
     return this.httpClient.post<any>(this.baseUrl + '/update.php', {id,nombre,email, password, apellidos, num_nomina, tipo })
@@ -60,6 +66,22 @@ public updateUser(id :any, nombre: any,email: any,password: any, apellidos: any,
     }));
     
 }
+
+/// Documentos
+
+public uploadFile(archivo : any) {
+    return this.httpClient.post(`${this.baseUrl}/subirArchivo.php`, JSON.stringify(archivo));
+  }
+  
+public registrarDocumentos(archivo: string, email: any) {
+    return this.httpClient.post<any>(this.baseUrl + '/registrarDocumento.php', {archivo, email})
+    .pipe(map(Documents => {
+    return Documents;
+    }));
+}
+
+
+
 
 
 //token
@@ -90,6 +112,18 @@ getTipo(){
 }
 deleteTipo(){
     localStorage.removeItem('tipo');
+}
+
+// Tipo
+
+setEmail(email : string){
+    localStorage.setItem('email', email);
+}
+getEmail(){
+    return localStorage.getItem('email');
+}
+deleteEmail(){
+    localStorage.removeItem('email');
 }
 
 
