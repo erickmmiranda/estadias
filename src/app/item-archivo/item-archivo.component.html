@@ -1,0 +1,35 @@
+<table class="table">
+    <tr>
+        <td></td>
+        <td *ngIf="!edicionActiva">{{itemInfo.nombre}}</td>
+        <td *ngIf="edicionActiva">
+            <input type="text" name="" [(ngModel)]="modeloItem" autocomplete="off" class="form-control input-sm" placeholder="Nombre archivo">
+        </td>
+        <td>
+            <fa-icon [icon]="faPdf" *ngIf="itemInfo.tipo == 'pdf'" size="2x"></fa-icon>
+            <fa-icon [icon]="faPng" *ngIf="itemInfo.tipo == 'png'" size="2x"></fa-icon>
+            <fa-icon [icon]="faDocx" *ngIf="itemInfo.tipo == 'docx'" size="2x"></fa-icon>
+            <fa-icon [icon]="faZip" *ngIf="itemInfo.tipo == 'zip'" size="2x"></fa-icon>
+            <fa-icon [icon]="faPptx" *ngIf="itemInfo.tipo == 'pptx'" size="2x"></fa-icon>
+            <fa-icon [icon]="faJpg" *ngIf="itemInfo.tipo == 'jpg'" size="2x"></fa-icon>
+        </td>
+        <td>{{itemInfo.tipo}}</td>
+        <td>{{itemInfo.size}}</td>
+        <td class="text-center">
+            <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="activarEdicion(itemInfo.nombre)" *ngIf="!edicionActiva">
+                <fa-icon [icon]="faEdit"></fa-icon> Renombrar</a>
+            <a *ngIf="!edicionActiva"> | </a>
+            <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(itemInfo)" *ngIf="!edicionActiva">
+                <fa-icon [icon]="faDelete"></fa-icon> Borrar</a>
+            <a *ngIf="!edicionActiva"> | </a>
+            <a href="javascript:void(0);" class="btn btn-outline-success" *ngIf="!edicionActiva">
+                <fa-icon [icon]="faDelete"></fa-icon> Validar</a>
+            <a href="javascript:void(0);" class="btn btn-outline-success" (click)="renombrar(itemInfo)" *ngIf="edicionActiva">
+                <fa-icon [icon]="faDelete"></fa-icon> Guardar</a>
+            <a *ngIf="edicionActiva"> | </a>
+            <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="desactivarEdicion()" *ngIf="edicionActiva">
+                <fa-icon [icon]="faDelete"></fa-icon> Cancelar</a>
+        </td>
+    </tr>
+
+</table>

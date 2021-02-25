@@ -1,0 +1,78 @@
+import { Component, OnInit, Input, Output,EventEmitter } from '@angular/core';
+import { ApiService } from '../api.service';
+import { HttpClient } from '@angular/common/http';
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
+import { faFileWord} from '@fortawesome/free-solid-svg-icons';
+import { faFileImage } from '@fortawesome/free-solid-svg-icons';
+import { faFilePowerpoint } from '@fortawesome/free-solid-svg-icons';
+import { faFileArchive } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+
+@Component({
+  selector: 'app-item-archivo',
+  templateUrl: './item-archivo.component.html',
+  styleUrls: ['./item-archivo.component.css']
+})
+export class ItemArchivoComponent implements OnInit {
+  faPdf = faFilePdf;
+  faZip = faFileArchive;
+  faJpg = faFileImage;
+  faPng = faFileImage;
+  faPptx = faFilePowerpoint;
+  faDocx = faFileWord;
+  faDelete = faTrashAlt;
+  faEdit = faEdit; 
+  faAdd = faPlusCircle;
+
+  baseUrl:string = "http://localhost/estadias/php";
+
+  edicionActiva: Boolean = false;
+
+  modeloItem! : string;
+
+  @Input()
+  itemInfo : any;
+
+  @Output()
+  cambioArchivo : EventEmitter<number> = new EventEmitter();
+
+
+  constructor(private dataService: ApiService,private httpClient : HttpClient) { }
+
+  ngOnInit(): void {
+  }
+
+  borrar(item : any){
+    const detalles = {
+      'ruta-archivo' : item.ruta + "/" + item.nombre
+    }
+
+    this.httpClient.get(this.baseUrl + "/borrar-archivos.php", { params : detalles}).subscribe(() =>{
+    this.cambioArchivo.emit();
+    });
+
+  }
+
+  activarEdicion(nombre : any){
+    this.modeloItem = nombre;
+    this.edicionActiva = true;
+  }
+
+  desactivarEdicion(){
+    this.edicionActiva = false;
+  }
+
+  renombrar(item :any){
+    const detalles = {
+      'ruta-archivo' : item.ruta + "/" + item.nombre,
+      'nuevo-archivo' : item.ruta + "/" + this.modeloItem
+    }
+
+    this.httpClient.get(this.baseUrl + "/renombrar-archivo.php", { params : detalles}).subscribe(() =>{
+      this.cambioArchivo.emit();
+    });
+  }
+
+}
