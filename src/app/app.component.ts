@@ -6,6 +6,9 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faAt } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
 selector: 'app-root',
@@ -18,9 +21,14 @@ export class AppComponent {
     faUsers = faUsers;
     faLogin = faSignInAlt;
     faFolder = faFolder;
+    faPerfil = faUserCircle;
+    faEmail = faAt;
+    faUsername = faUser;
     loginbtn:boolean;
     logoutbtn:boolean;
     administrador: any;
+    nombreUsuario: any;
+    correoUsuario: any;
     
     constructor(private dataService: ApiService, private router: Router) {
     dataService.getLoggedInName.subscribe((name: boolean) => this.changeName(name));
@@ -46,6 +54,11 @@ export class AppComponent {
 
     private changeAdministrador(tipo : string){
         this.administrador = tipo;
+    }
+
+    obtenerDatos(){
+        this.nombreUsuario = this.dataService.getToken();
+        this.correoUsuario = this.dataService.getEmail();
     }
 
     logout()

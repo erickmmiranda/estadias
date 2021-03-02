@@ -1,22 +1,24 @@
-<div class="container">
+<div class="container animated fadeIn">
     <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
     <h2 class="text-center mt-2 mb-3">Lista de documentos</h2>
     <table class="table">
-        <tr class="bg-dark text-white">
-            <td></td>
-            <td>Nombre</td>
-        </tr>
-        <tr *ngFor="let item of archivos">
-            <td></td>
-            <app-item-archivo [itemInfo]="item" (cambioArchivo)="refrescar()"></app-item-archivo>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>
-                <a [routerLink]="['/upload-document']" class="btn btn-success btn-lg">
-                    <fa-icon [icon]="faAdd"></fa-icon> Subir documento</a>
-            </td>
-        </tr>
+        <thead>
+            <tr class="bg-dark text-white">
+                <th>Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of archivos">
+
+                <app-item-archivo [itemInfo]="item" (cambioArchivo)="refrescar()"></app-item-archivo>
+            </tr>
+            <tr>
+                <td>
+                    <a [routerLink]="['/upload-document']" class="btn btn-success btn-lg">
+                        <fa-icon [icon]="faAdd"></fa-icon> Subir documento</a>
+                </td>
+            </tr>
+        </tbody>
     </table>
 
 

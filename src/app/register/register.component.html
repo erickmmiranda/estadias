@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-3">
     </div>
-    <div class="col-md-6 col-md-offset-3">
+    <div class="col-md-6 col-md-offset-3 animated fadeIn">
         <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
         <h2 class="text-center mb-3">Registrar usuario</h2>
         <div class="jumbotron">
@@ -45,11 +45,14 @@
                         <label for="tipo">Tipo</label>
                         <select type="text" *ngIf="campo_t" name="tipo" formControlName="tipo" autocomplete="off" class="form-control input-sm" placeholder="Tipo">
                             <option value="normal">Normal</option>
+                            <option value="verificador">Verificador</option>
                             <option value="administrador">Administrador</option>
                         </select>
                         <select type="text" *ngIf="validar_t" name="tipo" formControlName="tipo" autocomplete="off" class="form-control input-sm campoError" placeholder="Tipo">
                             <option value="normal">Normal</option>
+                            <option value="verificador">Verificador</option>
                             <option value="administrador">Administrador</option>
+
                         </select>
                         <p class="validar" *ngIf="validar_t">Rellena este campo</p>
                     </div>

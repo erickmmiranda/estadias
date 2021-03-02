@@ -9,6 +9,10 @@ import { faFileArchive } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEye } from '@fortawesome/free-solid-svg-icons';
+import { faDownload } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-archivo',
@@ -25,6 +29,15 @@ export class ItemArchivoComponent implements OnInit {
   faDelete = faTrashAlt;
   faEdit = faEdit; 
   faAdd = faPlusCircle;
+  faExcel = faFileExcel;
+  faFileCheck = faCheckCircle;
+  faView = faEye;
+  faDownload = faDownload;
+  alert : any;
+
+  tipo : any;
+
+  ruta:string="assets/docs/"
 
   baseUrl:string = "http://localhost/estadias/php";
 
@@ -42,17 +55,25 @@ export class ItemArchivoComponent implements OnInit {
   constructor(private dataService: ApiService,private httpClient : HttpClient) { }
 
   ngOnInit(): void {
+    this.tipoUsuario();
   }
 
   borrar(item : any){
-    const detalles = {
-      'ruta-archivo' : item.ruta + "/" + item.nombre
-    }
-
-    this.httpClient.get(this.baseUrl + "/borrar-archivos.php", { params : detalles}).subscribe(() =>{
-    this.cambioArchivo.emit();
-    });
-
+    this.alert = confirm("¿Deseas eliminar este archivo?");
+      if(this.alert == true){
+        const detalles = {
+          'ruta-archivo' : item.ruta + "/" + item.nombre
+        }
+    
+        this.httpClient.get(this.baseUrl + "/borrar-archivos.php", { params : detalles}).subscribe(() =>{
+        this.cambioArchivo.emit();
+        });
+    
+      }
+      else{
+  
+      }
+    
   }
 
   activarEdicion(nombre : any){
@@ -73,6 +94,10 @@ export class ItemArchivoComponent implements OnInit {
     this.httpClient.get(this.baseUrl + "/renombrar-archivo.php", { params : detalles}).subscribe(() =>{
       this.cambioArchivo.emit();
     });
+  }
+
+  tipoUsuario(){
+    this.tipo = this.dataService.getTipo();
   }
 
 }

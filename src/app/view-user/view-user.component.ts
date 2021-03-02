@@ -6,6 +6,8 @@ import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import { faUserShield } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUserCheck } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -19,9 +21,12 @@ export class ViewUserComponent implements OnInit {
   faEdit = faEdit; 
   faAdd = faPlusCircle;
   faAdmin = faUserShield;
+  faUser = faUser;
+  faChecker = faUserCheck;
   users: any;
   tipo: any;
   email: any;
+  alert! : boolean;
 
   constructor(private apiService : ApiService,
               private router : Router) {
@@ -38,20 +43,29 @@ export class ViewUserComponent implements OnInit {
         this.users = data;
     });
     
+
   }
 
 
   deleteUser(user : Users): void {
+    
     this.email = this.apiService.getEmail();
     if(this.email == user.email){
       alert("No te puedes eliminar tu mismo");
     }
     else{
-      this.apiService.deleteUser(user.id)
-      .subscribe( data => {
-        this.users = this.users.filter((u: Users)  => u !== user);
-      });
+      this.alert = confirm("¿Deseas eliminar este usuario?");
+      if(this.alert == true){
+        this.apiService.deleteUser(user.id)
+        .subscribe( data => {
+          this.users = this.users.filter((u: Users)  => u !== user);
+        });
+      }
+      else{
+  
+      }
     }
+    
   }
 
   editUser(user: Users): void {

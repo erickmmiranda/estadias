@@ -1,34 +1,38 @@
 <div class="container">
     <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
     <h2 class="text-center mt-2 mb-3">Lista de usuarios</h2>
-    <table class="table table-strip">
+    <table class="table table-strip animated fadeIn">
         <tr class="bg-dark text-white">
-            <td style="visibility: hidden"> ID</td>
-            <td>Nombre</td>
-            <td> Apellidos </td>
-            <td> Correo </td>
-            <td class="text-center"> Num. Nomina </td>
-            <td></td>
-            <td> Tipo </td>
-            <td class="text-center"> Accion </td>
+            <td hidden="true"></td>
+            <th width="15%"> Nombre </th>
+            <th> Apellidos </th>
+            <th> Correo </th>
+            <th class="text-center"> Num. Nomina </th>
+            <th></th>
+            <th> Tipo </th>
+            <th class="text-center"> Accion </th>
 
         </tr>
 
         <tr *ngFor="let user of this.users">
-            <td style="visibility: hidden">{{user.id}}</td>
+            <td hidden="true">{{user.id}}</td>
             <td>{{user.nombre}}</td>
             <td>{{user.apellidos}}</td>
             <td>{{user.email}}</td>
             <td class="text-center">{{user.num_nomina}}</td>
             <td>
-                <fa-icon [icon]="faAdmin" *ngIf="user.tipo == 'administrador'"></fa-icon>
+                <fa-icon [icon]="faAdmin" *ngIf="user.tipo == 'administrador'" size="lg"></fa-icon>
+                <fa-icon [icon]="faUser" *ngIf="user.tipo == 'normal'" size="lg"></fa-icon>
+                <fa-icon [icon]="faChecker" *ngIf="user.tipo == 'verificador'" size="lg"></fa-icon>
             </td>
             <td>{{user.tipo | titlecase}}</td>
             <td class="text-center">
-                <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="editUser(user)">
-                    <fa-icon [icon]="faEdit"></fa-icon> Editar</a> /
+                <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="editUser(user)" rounded="true">
+                    <fa-icon [icon]="faEdit"></fa-icon>
+                </a> /
                 <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="deleteUser(user)">
-                    <fa-icon [icon]="faDelete"></fa-icon> Eliminar</a>
+                    <fa-icon [icon]="faDelete"></fa-icon>
+                </a>
             </td>
         </tr>
         <tr>

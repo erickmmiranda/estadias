@@ -1,10 +1,11 @@
 <table class="table">
     <tr>
-        <td></td>
-        <td *ngIf="!edicionActiva">{{itemInfo.nombre}}</td>
-        <td *ngIf="edicionActiva">
+        <td class="espacio"></td>
+        <td *ngIf="!edicionActiva" width="40%">{{itemInfo.nombre}}</td>
+        <!-- <td *ngIf="edicionActiva" width="40%">
             <input type="text" name="" [(ngModel)]="modeloItem" autocomplete="off" class="form-control input-sm" placeholder="Nombre archivo">
-        </td>
+        </td> -->
+
         <td>
             <fa-icon [icon]="faPdf" *ngIf="itemInfo.tipo == 'pdf'" size="2x"></fa-icon>
             <fa-icon [icon]="faPng" *ngIf="itemInfo.tipo == 'png'" size="2x"></fa-icon>
@@ -12,24 +13,42 @@
             <fa-icon [icon]="faZip" *ngIf="itemInfo.tipo == 'zip'" size="2x"></fa-icon>
             <fa-icon [icon]="faPptx" *ngIf="itemInfo.tipo == 'pptx'" size="2x"></fa-icon>
             <fa-icon [icon]="faJpg" *ngIf="itemInfo.tipo == 'jpg'" size="2x"></fa-icon>
+            <fa-icon [icon]="faExcel" *ngIf="itemInfo.tipo == 'xlsx'" size="2x"></fa-icon>
+
         </td>
-        <td>{{itemInfo.tipo}}</td>
-        <td>{{itemInfo.size}}</td>
+
+        <td width="7%">{{itemInfo.size}}</td>
         <td class="text-center">
-            <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="activarEdicion(itemInfo.nombre)" *ngIf="!edicionActiva">
+            <!-- <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="activarEdicion(itemInfo.nombre)" *ngIf="!edicionActiva">
                 <fa-icon [icon]="faEdit"></fa-icon> Renombrar</a>
+            <a *ngIf="!edicionActiva"> | </a> -->
+
+
+            <a href="../../assets/docs/{{itemInfo.nombre}}" class="btn btn-outline-primary" *ngIf="!edicionActiva">
+                <fa-icon [icon]="faDownload" *ngIf="itemInfo.tipo != 'pdf'" size="lg"></fa-icon>
+                <fa-icon [icon]="faView" *ngIf="itemInfo.tipo == 'pdf'" size="lg"></fa-icon>
+            </a>
             <a *ngIf="!edicionActiva"> | </a>
-            <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(itemInfo)" *ngIf="!edicionActiva">
-                <fa-icon [icon]="faDelete"></fa-icon> Borrar</a>
-            <a *ngIf="!edicionActiva"> | </a>
-            <a href="javascript:void(0);" class="btn btn-outline-success" *ngIf="!edicionActiva">
-                <fa-icon [icon]="faDelete"></fa-icon> Validar</a>
-            <a href="javascript:void(0);" class="btn btn-outline-success" (click)="renombrar(itemInfo)" *ngIf="edicionActiva">
+            <a href="" class="btn btn-outline-success" *ngIf="!edicionActiva">
+                <fa-icon [icon]="faFileCheck" size="lg"></fa-icon>
+            </a>
+            <!-- <a href="javascript:void(0);" class="btn btn-outline-success" (click)="renombrar(itemInfo)" *ngIf="edicionActiva">
                 <fa-icon [icon]="faDelete"></fa-icon> Guardar</a>
             <a *ngIf="edicionActiva"> | </a>
             <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="desactivarEdicion()" *ngIf="edicionActiva">
-                <fa-icon [icon]="faDelete"></fa-icon> Cancelar</a>
+                <fa-icon [icon]="faDelete"></fa-icon> Cancelar</a> -->
+        </td>
+        <td class="text-center">
+            <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(itemInfo)" *ngIf="tipo != 'verificador'">
+                <fa-icon [icon]="faDelete" size="lg"></fa-icon>
+            </a>
         </td>
     </tr>
 
 </table>
+
+<script>
+    function mouseover() {
+        document.getElementById("prueba").style.background = "red";
+    }
+</script>

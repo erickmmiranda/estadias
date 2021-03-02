@@ -4,6 +4,7 @@ import { ApiService } from '../api.service';
 import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { faListAlt } from '@fortawesome/free-solid-svg-icons';
 
+
 @Component({
   selector: 'app-menu-usuarios',
   templateUrl: './menu-usuarios.component.html',
@@ -12,6 +13,7 @@ import { faListAlt } from '@fortawesome/free-solid-svg-icons';
 export class MenuUsuariosComponent implements OnInit {
   faAddUsu = faUserPlus;
   faList = faListAlt;
+ 
   tipo: any;
   constructor(private apiService : ApiService,private router: Router) { 
                 this.tipo = this.apiService.getTipo();

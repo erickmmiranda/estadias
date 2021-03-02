@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
             this.router.navigate([redirect]);
             },
             error => {
-            alert("Usuario o password incorrectos")
+            alert("Usuario o password incorrectos");
             });  
         }
       

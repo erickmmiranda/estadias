@@ -12,10 +12,12 @@ import { ApiService } from '../api.service';
 export class MenuDocumentComponent implements OnInit {
   faUpload = faUpload;
   faListDocument = faFolderOpen;
+  tipo : any;
 
-  constructor(private router : Router) { }
+  constructor(private router : Router, private dataService : ApiService) { }
 
   ngOnInit(): void {
+    this.tipoUsuarario();
   }
 
   agregarD()
@@ -28,5 +30,8 @@ export class MenuDocumentComponent implements OnInit {
     this.router.navigate( ['/list-document']);
   }
 
+  tipoUsuarario(){
+    this.tipo = this.dataService.getTipo();
+  }
 
 }

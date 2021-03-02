@@ -15,23 +15,38 @@
             </li> -->
             <li class="nav-item">
                 <a class="nav-link" *ngIf="loginbtn" class="btn btn-primary" routerLink="login" routerLinkActive="active">
-                    <fa-icon [icon]="faLogin"></fa-icon> Iniciar sesion</a>
+                    <fa-icon [icon]="faLogin" size="lg"></fa-icon> Iniciar sesion</a>
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link" *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link" *ngIf="logoutbtn" routerLink="menu-document" routerLinkActive="active">
-                    <fa-icon [icon]="faFolder"></fa-icon> Documentos</a>
+                    <fa-icon [icon]="faFolder" size="lg"></fa-icon> Documentos</a>
             </li>
             <li class="nav-item mr-4">
                 <a class="nav-link" *ngIf="administrador == 'administrador'" routerLink="menu-usuario" routerLinkActive="active">
-                    <fa-icon [icon]="faUsers"></fa-icon> Usuarios</a>
+                    <fa-icon [icon]="faUsers" size="lg"></fa-icon> Usuarios</a>
             </li>
-            <li class="nav-item">
-                <button type="button" *ngIf="logoutbtn" class="btn btn-danger" (click)="logout()">
-                    <fa-icon [icon]="faLogout"></fa-icon> Cerrar sesion</button>
-            </li>
+            <li class="mr-3" *ngIf="logoutbtn">
+                <div class="btn-group">
+                    <a class="dropdown-toggle nav-link" (click)="obtenerDatos()" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+                        <fa-icon [icon]="faPerfil" size="lg"></fa-icon>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-end " aria-labelledby="triggerId">
+                        <a class="dropdown-item disabled">
+                            <fa-icon [icon]="faUsername"></fa-icon> {{ nombreUsuario }}
+                        </a>
+                        <a class="dropdown-item disabled">
+                            <fa-icon [icon]="faEmail"></fa-icon> {{ correoUsuario }}
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Editar perfil</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#"><button type="button" *ngIf="logoutbtn" class="btn btn-danger" (click)="logout()">
+                            <fa-icon [icon]="faLogout"></fa-icon> Cerrar sesion</button></a>
+                    </div>
+                </div>
         </ul>
     </div>
 </nav>
