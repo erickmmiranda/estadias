@@ -12,10 +12,12 @@ import { ApiService } from '../api.service';
 export class UploadDocumentComponent implements OnInit {
   correo : any;
   nombrearchivo : string = "";
+  tamañoArachivo : any;
   archivo = {
     nombreArchivo: "",
     base64textString: "",
     correo : "",
+    size : 0 ,
   }
 
   constructor(private dataService: ApiService,private router:Router) {
@@ -29,6 +31,7 @@ export class UploadDocumentComponent implements OnInit {
     var files = event.target.files;
     var file = files[0];
     this.archivo.nombreArchivo = file.name;
+    this.archivo.size = file.size;
 
     if(files && file) {
       var reader = new FileReader();
@@ -43,34 +46,38 @@ export class UploadDocumentComponent implements OnInit {
   }
 
   upload() {
-    this.correo = this.dataService.getEmail();
-    this.archivo.correo = this.correo;
-    console.log(this.archivo);
-    this.dataService.uploadFile(this.archivo).subscribe(
-      (datos : any) => {
-        if(datos['resultado'] == 'OK') {
-          alert(datos['mensaje']);
+    if(this.archivo.size > 5242880){
+      alert("No se puede subir archivos mayores a 5Mb")
+    }
+    else{
+      this.correo = this.dataService.getEmail();
+      this.archivo.correo = this.correo;
+      console.log(this.archivo);
+      this.dataService.uploadFile(this.archivo).subscribe(
+        (datos : any) => {
+          if(datos['resultado'] == 'OK') {
+            alert(datos['mensaje']);
+          }
+          else{
+            alert("Error al subir archivo");
+          }
         }
-        else{
-          alert("Error al subir archivo");
-        }
-      }
-    );
-
-    this.nombrearchivo = this.archivo.nombreArchivo;
+      );
+  
+      this.nombrearchivo = this.archivo.nombreArchivo;
+      
+      this.dataService.registrarDocumentos(
+        this.archivo.nombreArchivo,
+        this.archivo.correo)
+        .pipe(first())
+        .subscribe(
+        data => {
+        this.router.navigate(['list-document']);
+        },
     
-    this.dataService.registrarDocumentos(
-      this.archivo.nombreArchivo,
-      this.archivo.correo)
-      .pipe(first())
-      .subscribe(
-      data => {
-      this.router.navigate(['list-document']);
-      },
-  
-      error => {
-      });
-
+        error => {
+        });
+    }
+    
   }
-  
 }
