@@ -13,12 +13,16 @@ export class ListDocumentComponent implements OnInit {
   faAdd = faPlusCircle;
 
   archivos : any;
+  email: any;
+  byUser : any;
+  
 
   constructor(private dataService: ApiService) { 
 
   }
 
   ngOnInit(): void {
+    this.getDocuments();
     this.peticionDocumentos();
   }
 
@@ -29,7 +33,17 @@ export class ListDocumentComponent implements OnInit {
   }  
 
   refrescar(){
+    this.getDocuments
     this.peticionDocumentos();
+  }
+
+  getDocuments(){
+    this.email = this.dataService.getEmail() + "";
+    this.dataService.getDocumentByUser(this.email).subscribe((data : Array<object>) =>{    
+    console.log(data);
+      this.byUser = data;
+    });
+
   }
 
 }

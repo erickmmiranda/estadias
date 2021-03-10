@@ -13,6 +13,7 @@ import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
+import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-item-archivo',
@@ -33,6 +34,7 @@ export class ItemArchivoComponent implements OnInit {
   faFileCheck = faCheckCircle;
   faView = faEye;
   faDownload = faDownload;
+  share = faShareAlt;
   alert : any;
 
   tipo : any;
@@ -62,7 +64,9 @@ export class ItemArchivoComponent implements OnInit {
     this.alert = confirm("¿Deseas eliminar este archivo?");
       if(this.alert == true){
         const detalles = {
-          'ruta-archivo' : item.ruta + "/" + item.nombre
+          'ruta-archivo' : item.ruta + "/" + item.nombre,
+          'archivo': item.nombre,
+          'email': this.dataService.getEmail() + ""
         }
     
         this.httpClient.get(this.baseUrl + "/borrar-archivos.php", { params : detalles}).subscribe(() =>{

@@ -1,7 +1,7 @@
 <table class="table">
     <tr>
         <td class="espacio"></td>
-        <td *ngIf="!edicionActiva" width="40%">{{itemInfo.nombre}}</td>
+        <td width="40%">{{itemInfo.nombre}}</td>
         <!-- <td *ngIf="edicionActiva" width="40%">
             <input type="text" name="" [(ngModel)]="modeloItem" autocomplete="off" class="form-control input-sm" placeholder="Nombre archivo">
         </td> -->
@@ -24,13 +24,17 @@
             <a *ngIf="!edicionActiva"> | </a> -->
 
 
-            <a href="../../assets/docs/{{itemInfo.nombre}}" class="btn btn-outline-primary" *ngIf="!edicionActiva">
+            <a href="../../assets/docs/{{itemInfo.nombre}}" class="btn btn-outline-primary">
                 <fa-icon [icon]="faDownload" *ngIf="itemInfo.tipo != 'pdf'" size="lg"></fa-icon>
                 <fa-icon [icon]="faView" *ngIf="itemInfo.tipo == 'pdf'" size="lg"></fa-icon>
             </a>
-            <a *ngIf="!edicionActiva"> | </a>
-            <a href="" class="btn btn-outline-success" *ngIf="!edicionActiva">
+            <a *ngIf="tipo == 'verificador'"> | </a>
+            <a class="btn btn-outline-success" *ngIf="tipo == 'verificador'">
                 <fa-icon [icon]="faFileCheck" size="lg"></fa-icon>
+            </a>
+            <a *ngIf="tipo == 'normal'"> | </a>
+            <a class="btn btn-outline-warning" *ngIf="tipo == 'normal'">
+                <fa-icon [icon]="share" size="lg"></fa-icon>
             </a>
             <!-- <a href="javascript:void(0);" class="btn btn-outline-success" (click)="renombrar(itemInfo)" *ngIf="edicionActiva">
                 <fa-icon [icon]="faDelete"></fa-icon> Guardar</a>

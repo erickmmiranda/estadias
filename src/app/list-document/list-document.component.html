@@ -8,9 +8,10 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let item of archivos">
-
-                <app-item-archivo [itemInfo]="item" (cambioArchivo)="refrescar()"></app-item-archivo>
+            <tr *ngFor="let doc of byUser">
+                <div *ngFor="let item of archivos">
+                    <app-item-archivo [itemInfo]="item" (cambioArchivo)="refrescar()" *ngIf="item.nombre == doc.archivo && doc.email == email"></app-item-archivo>
+                </div>
             </tr>
             <tr>
                 <td>

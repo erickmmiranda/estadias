@@ -80,6 +80,9 @@ public registrarDocumentos(archivo: string, email: any) {
     }));
 }
 
+public getDocumentByUser(email : string){
+    return this.httpClient.get<any>(this.baseUrl + '/getDocumentByUser.php?email=' + email);
+}
 
 
 
@@ -114,7 +117,7 @@ deleteTipo(){
     localStorage.removeItem('tipo');
 }
 
-// Tipo
+// Email
 
 setEmail(email : string){
     localStorage.setItem('email', email);
