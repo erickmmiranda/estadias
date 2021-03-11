@@ -19,6 +19,7 @@ import { ListDocumentComponent } from './list-document/list-document.component';
 import { ApiService } from './api.service';
 import { FiltroExtensionPipe } from './filtro-extension.pipe';
 import { ItemArchivoComponent } from './item-archivo/item-archivo.component';
+import { AsignarComponent } from './asignar/asignar.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ItemArchivoComponent } from './item-archivo/item-archivo.component';
     ListDocumentComponent,
     FiltroExtensionPipe,
     ItemArchivoComponent,
+    AsignarComponent,
   ],
   imports: [
     BrowserModule,

@@ -40,8 +40,8 @@ export class ListDocumentComponent implements OnInit {
   getDocuments(){
     this.email = this.dataService.getEmail() + "";
     this.dataService.getDocumentByUser(this.email).subscribe((data : Array<object>) =>{    
-    console.log(data);
       this.byUser = data;
+
     });
 
   }

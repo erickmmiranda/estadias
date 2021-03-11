@@ -14,6 +14,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-item-archivo',
@@ -50,11 +51,14 @@ export class ItemArchivoComponent implements OnInit {
   @Input()
   itemInfo : any;
 
+  @Input()
+  documentoInfo : any;
+
   @Output()
   cambioArchivo : EventEmitter<number> = new EventEmitter();
 
 
-  constructor(private dataService: ApiService,private httpClient : HttpClient) { }
+  constructor(private dataService: ApiService, private httpClient: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.tipoUsuario();
@@ -102,6 +106,11 @@ export class ItemArchivoComponent implements OnInit {
 
   tipoUsuario(){
     this.tipo = this.dataService.getTipo();
+  }
+
+  asignarDocumento(document: any) {
+    console.log(document.id)
+    this.router.navigate(['/asignar', document.id]);
   }
 
 }

@@ -84,6 +84,13 @@ public getDocumentByUser(email : string){
     return this.httpClient.get<any>(this.baseUrl + '/getDocumentByUser.php?email=' + email);
 }
 
+public obtenerVerificador(){
+    return this.httpClient.get<any>(this.baseUrl + '/listAsignar.php');
+}
+
+public obtenerDocumentById(id: any){
+    return this.httpClient.get<any>(this.baseUrl + '/getDocumentById.php?id=' + id);
+}
 
 
 

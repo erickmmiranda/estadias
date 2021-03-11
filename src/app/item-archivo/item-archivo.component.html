@@ -33,7 +33,7 @@
                 <fa-icon [icon]="faFileCheck" size="lg"></fa-icon>
             </a>
             <a *ngIf="tipo == 'normal'"> | </a>
-            <a class="btn btn-outline-warning" *ngIf="tipo == 'normal'">
+            <a class="btn btn-outline-warning" *ngIf="tipo == 'normal'" (click)="asignarDocumento(documentoInfo)">
                 <fa-icon [icon]="share" size="lg"></fa-icon>
             </a>
             <!-- <a href="javascript:void(0);" class="btn btn-outline-success" (click)="renombrar(itemInfo)" *ngIf="edicionActiva">
