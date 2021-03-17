@@ -15,8 +15,8 @@ export class ListDocumentComponent implements OnInit {
   archivos : any;
   email: any;
   byUser : any;
+  tipoUsu : any;
   
-
   constructor(private dataService: ApiService) { 
 
   }
@@ -24,6 +24,7 @@ export class ListDocumentComponent implements OnInit {
   ngOnInit(): void {
     this.getDocuments();
     this.peticionDocumentos();
+    this.getTipoUsu();
   }
 
   peticionDocumentos(){
@@ -44,6 +45,10 @@ export class ListDocumentComponent implements OnInit {
 
     });
 
+  }
+
+  getTipoUsu(){
+    this.tipoUsu = this.dataService.getTipo();
   }
 
 }

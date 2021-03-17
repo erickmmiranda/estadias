@@ -2,6 +2,7 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Users } from './users';
+import { Params } from '@angular/router';
 
 @Injectable({
 providedIn: 'root'
@@ -14,7 +15,7 @@ export class ApiService {
 baseUrl:string = "http://localhost/estadias/php";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 @Output() getAdministrator: EventEmitter<any> = new EventEmitter();
-constructor(private httpClient : HttpClient) { }
+constructor(private httpClient: HttpClient) { }
 
 
 public userlogin(username: any, password: any) {
@@ -80,7 +81,7 @@ public registrarDocumentos(archivo: string, email: any) {
     }));
 }
 
-public getDocumentByUser(email : string){
+public getDocumentByUser(email: string){
     return this.httpClient.get<any>(this.baseUrl + '/getDocumentByUser.php?email=' + email);
 }
 
@@ -91,8 +92,6 @@ public obtenerVerificador(){
 public obtenerDocumentById(id: any){
     return this.httpClient.get<any>(this.baseUrl + '/getDocumentById.php?id=' + id);
 }
-
-
 
 //token
 setToken(token: string) {
