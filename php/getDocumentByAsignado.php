@@ -5,7 +5,7 @@ $email = $_GET['email'];
 
 error_reporting(E_ERROR);
 $documents = [];
-$sql = "SELECT * FROM  archivos WHERE email = '$email'";
+$sql = "SELECT DISTINCT a.id, a.archivo,a.asignado, count(asi.id_documento) as asignados, sum(asi.validacion) as validados from asignados as asi, archivos as a WHERE a.id = asi.id_documento AND a.email = '$email' GROUP by asi.id_documento";
 
 if($result = mysqli_query($con,$sql))
 {
@@ -14,9 +14,9 @@ if($result = mysqli_query($con,$sql))
   {
     $documents[$cr]['id']    = $row['id'];
     $documents[$cr]['archivo'] = $row['archivo'];
-    $documents[$cr]['fecha'] = $row['fecha'];
-    $documents[$cr]['email'] = $row['email'];
     $documents[$cr]['asignado'] = $row['asignado'];
+    $documents[$cr]['asignados'] = $row['asignados'];
+    $documents[$cr]['validados'] = $row['validados'];
     $cr++;
   }
     

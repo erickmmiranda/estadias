@@ -64,13 +64,15 @@ export class ItemArchivoComponent implements OnInit {
     this.tipoUsuario();
   }
 
-  borrar(item : any){
+  borrar(item : any, id_doc : any){
+    console.log(id_doc);
     this.alert = confirm("¿Deseas eliminar este archivo?");
       if(this.alert == true){
         const detalles = {
           'ruta-archivo' : item.ruta + "/" + item.nombre,
           'archivo': item.nombre,
-          'email': this.dataService.getEmail() + ""
+          'email': this.dataService.getEmail() + "",
+          'id': id_doc
         }
     
         this.httpClient.get(this.baseUrl + "/borrar-archivos.php", { params : detalles}).subscribe(() =>{

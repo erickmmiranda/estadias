@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from '../api.service';
 import { FormBuilder, FormGroup, FormArray, FormControl, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +17,7 @@ export class AsignarComponent implements OnInit {
   form: FormGroup;
   baseUrl:string = "http://localhost/estadias/php";
 
-  constructor(private routes: ActivatedRoute, private dataService: ApiService, private fb: FormBuilder, private httpClient: HttpClient) {
+  constructor(private routes: ActivatedRoute, private dataService: ApiService, private fb: FormBuilder, private httpClient: HttpClient, private router: Router) {
     this.form = this.fb.group({
       checkArray : this.fb.array([])
     })
@@ -40,7 +40,7 @@ export class AsignarComponent implements OnInit {
 
   getDocumentById(): void{
     this.dataService.obtenerDocumentById(this.id).subscribe((data: any) => {
-      this.documento = data;
+      this.documento = data[0];
     });
   }
 
@@ -63,8 +63,9 @@ export class AsignarComponent implements OnInit {
 
   submitForm() {
     const usuarios: any = this.form.value.checkArray;
+
+    
     usuarios.forEach((element: any) => {
-      console.log(element);
       const detalles = {
         'id_usuario' : element,
         'id_doc' : this.id
@@ -72,6 +73,10 @@ export class AsignarComponent implements OnInit {
       this.httpClient.get<any>(this.baseUrl + '/asignarDocumentos.php', {params: detalles}).subscribe((resultado: any) => {
       });
     });
+
+    this.httpClient.get<any>(this.baseUrl + '/asignarDocumento.php?id=' + this.id).subscribe((resultado: any) => {});
+
+    this.router.navigate( ['/list-document']);
   }
 
 }

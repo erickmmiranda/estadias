@@ -1,34 +1,75 @@
 <div class="container fast fadeIn">
     <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
             <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
             <h2 class="text-center mt-2 mb-5">Menu documentos</h2>
         </div>
-        <div class="col-2"></div>
+        <div class="col-md-2"></div>
     </div>
-    <div class="row">
-        <div class="col-2"></div>
-        <div class="col-4" *ngIf="tipo != 'verificador'">
+    <div class="row" *ngIf="tipo != 'verificador'">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
             <div class="card">
                 <span class="text-center mt-3">
                     <fa-icon [icon]="faUpload" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="agregarD()" type="button" class="btn btn-success btn-block">Subir documento</button>
+                    <button (click)="agregarD()" type="button" class="btn btn-success btn-block">Subir Documento</button>
                 </div>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-md-4">
             <div class="card">
                 <span class="text-center mt-3">
                     <fa-icon [icon]="faListDocument" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="verDocumentos()" type="button" class="btn btn-primary btn-block">Lista de documentos</button>
+                    <button (click)="verDocumentos()" type="button" class="btn btn-primary btn-block">Lista de Documentos</button>
                 </div>
             </div>
         </div>
-        <div class="col-2"></div>
+        <div class="col-md-2"></div>      
+    </div>
+    <div class="row mt-5" *ngIf="tipo != 'verificador'">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="card">
+                <span class="text-center mt-3">
+                    <fa-icon [icon]="faAsignados" size="10x"></fa-icon>
+                </span>
+                <div class="card-body">
+                    <button (click)="docAsignados()" type="button" class="btn btn-primary btn-block">Documentos Asignados</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <span class="text-center mt-3">
+                    <fa-icon [icon]="faCheck" size="10x"></fa-icon>
+                </span>
+                <div class="card-body">
+                    <button (click)="docValidados()" type="button" class="btn btn-primary btn-block">Documentos Validados</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    <div class="row mt-5" *ngIf="tipo == 'verificador'">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="card">
+                <span class="text-center mt-3">
+                    <fa-icon [icon]="faFiles" size="10x"></fa-icon>
+                </span>
+                <div class="card-body">
+                    <button (click)="docVerificador()" type="button" class="btn btn-primary btn-block">Mis documentos</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            
+        </div>
+        <div class="col-md-2"></div>    
     </div>
 </div>

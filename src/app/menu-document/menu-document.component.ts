@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { faUpload } from '@fortawesome/free-solid-svg-icons';
 import { faFolderOpen } from '@fortawesome/free-solid-svg-icons';
+import { faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faFileAlt } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
 import { ApiService } from '../api.service';
 
@@ -12,6 +15,9 @@ import { ApiService } from '../api.service';
 export class MenuDocumentComponent implements OnInit {
   faUpload = faUpload;
   faListDocument = faFolderOpen;
+  faAsignados = faClipboardList;
+  faCheck = faCheckCircle;
+  faFiles = faFileAlt;
   tipo : any;
 
   constructor(private router : Router, private dataService : ApiService) { }
@@ -29,9 +35,21 @@ export class MenuDocumentComponent implements OnInit {
   {
     this.router.navigate( ['/list-document']);
   }
+  docAsignados()
+  {
+    this.router.navigate( ['/doc-asignados']);
+  }
+  docValidados()
+  {
+    this.router.navigate( ['/doc-validados']);
+  }
 
   tipoUsuarario(){
     this.tipo = this.dataService.getTipo();
   }
 
+  docVerificador()
+  {
+    this.router.navigate( ['/doc-verificador']);
+  }
 }

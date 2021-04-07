@@ -9,7 +9,7 @@
             $id = $_GET['id_doc'];
 
             $sql = "INSERT INTO asignados(id_documento,id_usuario,validacion) VALUES ('$id','$usuario','0')";
-            
+
             if(mysqli_query($con, $sql)){
                 echo json_encode(array(
                     'status' => 'ok'

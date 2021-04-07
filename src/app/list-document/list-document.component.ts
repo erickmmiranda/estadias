@@ -42,7 +42,6 @@ export class ListDocumentComponent implements OnInit {
     this.email = this.dataService.getEmail() + "";
     this.dataService.getDocumentByUser(this.email).subscribe((data : Array<object>) =>{    
       this.byUser = data;
-
     });
 
   }

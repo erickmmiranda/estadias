@@ -25,6 +25,7 @@ this.tipo = Users[0].tipo;
 this.setEmail(Users[0].email);
 this.setTipo(Users[0].tipo);
 this.setToken(Users[0].nombre);
+this.setId(Users[0].id);
 if(this.tipo == "administrator"){
     this.getAdministrator.emit(this.tipo);
 }
@@ -84,6 +85,12 @@ public registrarDocumentos(archivo: string, email: any) {
 public getDocumentByUser(email: string){
     return this.httpClient.get<any>(this.baseUrl + '/getDocumentByUser.php?email=' + email);
 }
+public getDocumentByAsignado(email: string){
+    return this.httpClient.get<any>(this.baseUrl + '/getDocumentByAsignado.php?email=' + email);
+}
+public getDocumentByVerificador(id: string){
+    return this.httpClient.get<any>(this.baseUrl + '/getDocumentByVerificador.php?id=' + id);
+}
 
 public obtenerVerificador(){
     return this.httpClient.get<any>(this.baseUrl + '/listAsignar.php');
@@ -93,15 +100,19 @@ public obtenerDocumentById(id: any){
     return this.httpClient.get<any>(this.baseUrl + '/getDocumentById.php?id=' + id);
 }
 
+public validarDocumento(id_doc: any, id_usu: any, val : any){
+    return this.httpClient.post<any>(this.baseUrl + '/validarDocumento.php', {id_doc,id_usu, val});
+}
+
 //token
 setToken(token: string) {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
 }
 getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
 }
 deleteToken() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
 }
 isLoggedIn() {
     const usertoken = this.getToken();
@@ -114,25 +125,37 @@ isLoggedIn() {
 // Tipo
 
 setTipo(tipo : string){
-    localStorage.setItem('tipo', tipo);
+    sessionStorage.setItem('tipo', tipo);
 }
 getTipo(){
-    return localStorage.getItem('tipo');
+    return sessionStorage.getItem('tipo');
 }
 deleteTipo(){
-    localStorage.removeItem('tipo');
+    sessionStorage.removeItem('tipo');
 }
 
 // Email
 
 setEmail(email : string){
-    localStorage.setItem('email', email);
+    sessionStorage.setItem('email', email);
 }
 getEmail(){
-    return localStorage.getItem('email');
+    return sessionStorage.getItem('email');
 }
 deleteEmail(){
-    localStorage.removeItem('email');
+    sessionStorage.removeItem('email');
+}
+
+// Email
+
+setId(id : string){
+    sessionStorage.setItem('id', id);
+}
+getId(){
+    return sessionStorage.getItem('id');
+}
+deleteId(){
+    sessionStorage.removeItem('id');
 }
 
 

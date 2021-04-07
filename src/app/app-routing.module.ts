@@ -12,6 +12,9 @@ import { UploadDocumentComponent } from './upload-document/upload-document.compo
 import { MenuDocumentComponent } from './menu-document/menu-document.component';
 import { ListDocumentComponent } from './list-document/list-document.component';
 import { AsignarComponent } from './asignar/asignar.component';
+import { DocAsignadosComponent } from './doc-asignados/doc-asignados.component';
+import { DocsVerificadorComponent } from './docs-verificador/docs-verificador.component';
+import { DocsValidadosComponent } from './docs-validados/docs-validados.component';
 
 const routes: Routes = [
 { path: '', component: LoginComponent },
@@ -25,8 +28,10 @@ const routes: Routes = [
 { path: 'menu-document', component: MenuDocumentComponent,canActivate: [AuthguardGuard]  },
 { path: 'list-document', component: ListDocumentComponent,canActivate: [AuthguardGuard]  },
 { path: 'edit/:id', component: EditarComponent, canActivate: [AuthguardGuard]  },
-{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] }
-
+{ path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] },
+{ path: 'doc-asignados', component: DocAsignadosComponent,canActivate: [AuthguardGuard] },
+{ path: 'doc-verificador', component: DocsVerificadorComponent,canActivate: [AuthguardGuard] },
+{ path: 'docs-validados', component: DocsValidadosComponent,canActivate: [AuthguardGuard] }
 ]
 
 @NgModule({

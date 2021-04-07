@@ -1,11 +1,11 @@
 <?php
 require 'connect.php';
 
-$email = $_GET['email'];
+$id = $_GET['id'];
 
 error_reporting(E_ERROR);
 $documents = [];
-$sql = "SELECT * FROM  archivos WHERE email = '$email'";
+$sql = "SELECT a.id,a.archivo,asig.validacion from archivos as a, asignados as asig WHERE asig.id_usuario = $id AND a.id = asig.id_documento";
 
 if($result = mysqli_query($con,$sql))
 {
@@ -14,13 +14,9 @@ if($result = mysqli_query($con,$sql))
   {
     $documents[$cr]['id']    = $row['id'];
     $documents[$cr]['archivo'] = $row['archivo'];
-    $documents[$cr]['fecha'] = $row['fecha'];
-    $documents[$cr]['email'] = $row['email'];
-    $documents[$cr]['asignado'] = $row['asignado'];
+    $documents[$cr]['validacion'] = $row['validacion'];
     $cr++;
   }
-    
-    //print_r($users);
 
   echo json_encode($documents);
 }

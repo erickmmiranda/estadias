@@ -1,44 +1,41 @@
 <div class="container animated fadeIn">
-<div class="row">
-    <div class="col-9">
-        <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
+    <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
     <h2 class="text-center mt-2 mb-3">Lista de documentos</h2>
-    <table class="table">
-        <thead>
-            <tr class="bg-dark text-white">
-                <th>Nombre</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let doc of byUser">
-                <div *ngFor="let item of archivos">
-                    <app-item-archivo [itemInfo]="item" [documentoInfo]="doc" (cambioArchivo)="refrescar()" *ngIf="item.nombre == doc.archivo && doc.email == email"></app-item-archivo>
-                </div>
-            </tr>
-            <tr>
-                <td>
-                    <a [routerLink]="['/upload-document']" class="btn btn-success btn-lg" *ngIf="tipoUsu != 'verificador'">
-                        <fa-icon [icon]="faAdd"></fa-icon> Subir documento</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    <div class="col-3">
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div class="list-group">
-            <button type="button" class="list-group-item btn-outline-primary">Documentos asignados</button>
+    <div class="row">
+        <div class="col-md-9">
+        <table class="table">
+            <thead>
+                <tr class="bg-dark text-white">
+                    <th>Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doc of byUser">
+                    <div *ngFor="let item of archivos">
+                        <app-item-archivo [itemInfo]="item" [documentoInfo]="doc" (cambioArchivo)="refrescar()" *ngIf="item.nombre == doc.archivo && doc.asignado == 0"></app-item-archivo>
+                    </div>
+                </tr>
+                <tr>
+                    <td>
+                        <a [routerLink]="['/upload-document']" class="btn btn-success btn-lg" *ngIf="tipoUsu != 'verificador'">
+                            <fa-icon [icon]="faAdd"></fa-icon> Subir documento</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         </div>
-        <div class="list-group mt-4 mb-4">
-            <button type="button" class="list-group-item btn-outline-primary">Documentos validados</button>
+        <div class="col-md-3">
+            <br>
+            <br>
+            <h4 class="text-center mb-3">Opciones</h4>
+            <div class="list-group">
+                <button type="button" [routerLink]="['/doc-asignados']" class="list-group-item btn-outline-primary">Documentos asignados</button>
+            </div>
+            <div class="list-group mt-4 mb-4">
+                <button type="button" class="list-group-item btn-outline-primary">Documentos validados</button>
+            </div>
+
         </div>
-        <a tabindex="0" class="btn btn-secondary" data-toggle="popover" data-trigger="focus" title="Popup title" data-content="Popup content">Trigger</a>
     </div>
-</div>
     
 </div>

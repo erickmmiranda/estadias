@@ -43,7 +43,7 @@
                 <fa-icon [icon]="faDelete"></fa-icon> Cancelar</a> -->
         </td>
         <td class="text-center">
-            <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(itemInfo)" *ngIf="tipo != 'verificador'">
+            <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(itemInfo, documentoInfo.id)" *ngIf="tipo != 'verificador'">
                 <fa-icon [icon]="faDelete" size="lg"></fa-icon>
             </a>
         </td>

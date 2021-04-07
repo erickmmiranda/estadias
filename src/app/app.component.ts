@@ -66,6 +66,7 @@ export class AppComponent {
     this.dataService.deleteToken();
     this.dataService.deleteTipo();
     this.dataService.deleteEmail();
+    this.dataService.deleteId();
     window.location.href = window.location.href;
     this.router.navigate( ['/login']);
     this.administrador = "";

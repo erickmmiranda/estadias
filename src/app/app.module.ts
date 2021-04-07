@@ -20,6 +20,9 @@ import { ApiService } from './api.service';
 import { FiltroExtensionPipe } from './filtro-extension.pipe';
 import { ItemArchivoComponent } from './item-archivo/item-archivo.component';
 import { AsignarComponent } from './asignar/asignar.component';
+import { DocAsignadosComponent } from './doc-asignados/doc-asignados.component';
+import { DocsVerificadorComponent } from './docs-verificador/docs-verificador.component';
+import { DocsValidadosComponent } from './docs-validados/docs-validados.component';
 
 
 @NgModule({
@@ -39,6 +42,9 @@ import { AsignarComponent } from './asignar/asignar.component';
     FiltroExtensionPipe,
     ItemArchivoComponent,
     AsignarComponent,
+    DocAsignadosComponent,
+    DocsVerificadorComponent,
+    DocsValidadosComponent,
   ],
   imports: [
     BrowserModule,
