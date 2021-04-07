@@ -12,8 +12,9 @@ header("Content-Type: application/json; charset=UTF-8");
         
         $archivo=$_GET['archivo'];
         $email=$_GET['email'];
+        $id=$_GET['id'];
         $sql = "DELETE FROM archivos WHERE email ='$email' AND archivo = '$archivo' LIMIT 1";
-        $sql2 = "DELETE FROM asignados WHERE id_documento = 41";
+        $sql2 = "DELETE FROM asignados WHERE id_documento = $id";
 
         if( $_GET['ruta-archivo']){
 
