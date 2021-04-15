@@ -57,15 +57,17 @@ export class ItemArchivoComponent implements OnInit {
   @Output()
   cambioArchivo : EventEmitter<number> = new EventEmitter();
 
-
-  constructor(private dataService: ApiService, private httpClient: HttpClient, private router: Router) { }
+  constructor(private dataService: ApiService, private httpClient: HttpClient, private router: Router) {
+    if(this.dataService.getTipo() == "verificador"){
+      this.router.navigate(['dashboard']);
+    }
+  }
 
   ngOnInit(): void {
     this.tipoUsuario();
   }
 
   borrar(item : any, id_doc : any){
-    console.log(id_doc);
     this.alert = confirm("¿Deseas eliminar este archivo?");
       if(this.alert == true){
         const detalles = {
@@ -111,7 +113,6 @@ export class ItemArchivoComponent implements OnInit {
   }
 
   asignarDocumento(document: any) {
-    console.log(document.id)
     this.router.navigate(['/asignar', document.id]);
   }
 

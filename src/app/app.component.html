@@ -1,11 +1,11 @@
-<nav class="navbar navbar-expand-lg navbar-light rounded colorNavbar">
-    <a class="navbar-brand" routerLink="home" routerLinkActive="active">Hanon Systems</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg navbar-light rounded colorNavbar sticky-top">
+    <a class="container navbar-brand" routerLink="home" routerLinkActive="active">Hanon Systems</a>
+    <button class="container navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample" aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
   
-  <span class="navbar-toggler-icon"></span>
-  </button>
+        <span class="navbar-toggler-icon"></span>
+    </button>
 
-    <div class="collapse navbar-collapse" id="navbarsExample">
+    <div class="container collapse navbar-collapse" id="navbarsExample">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item mr-4">
                 <a class="nav-link" *ngIf="loginbtn" routerLink="home" routerLinkActive="active">Inicio</a>
@@ -22,18 +22,20 @@
             </li>
             <li class="nav-item mr-2">
                 <a class="nav-link" *ngIf="logoutbtn" routerLink="menu-document" routerLinkActive="active">
-                    <fa-icon [icon]="faFolder" size="lg"></fa-icon> Documentos</a>
+                    <fa-icon [icon]="faFolder" size="lg"></fa-icon>
+                    Documentos <mdb-badge class="pt-2 pb-2" color="purple" *ngIf="administrador == 'verificador' && notificacion > 0"> {{ notificacion }} </mdb-badge>
+                </a>
             </li>
-            <li class="nav-item mr-4">
-                <a class="nav-link" *ngIf="administrador == 'administrador'" routerLink="menu-usuario" routerLinkActive="active">
+            <li class="nav-item" *ngIf="administrador == 'administrador'">
+                <a class="nav-link" routerLink="menu-usuario" routerLinkActive="active">
                     <fa-icon [icon]="faUsers" size="lg"></fa-icon> Usuarios</a>
             </li>
-            <li class="mr-3" *ngIf="logoutbtn">
-                <div class="btn-group">
-                    <a class="dropdown-toggle nav-link" (click)="obtenerDatos()" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="active">
+            <li class="mr-3" *ngIf="logoutbtn" style="margin-left: 5cm;">
+                <div class="btn-group" routerLinkActive="active">
+                    <a class="dropdown-toggle nav-link" (click)="obtenerDatos()" id="triggerId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                         <fa-icon [icon]="faPerfil" size="lg"></fa-icon>
                     </a>
-                    <div class="dropdown-menu dropdown-menu-end " aria-labelledby="triggerId">
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="triggerId" placement="left">
                         <a class="dropdown-item disabled">
                             <fa-icon [icon]="faUsername"></fa-icon> {{ nombreUsuario }}
                         </a>
@@ -41,9 +43,7 @@
                             <fa-icon [icon]="faEmail"></fa-icon> {{ correoUsuario }}
                         </a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Editar perfil</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#"><button type="button" *ngIf="logoutbtn" class="btn btn-danger" (click)="logout()">
+                        <a class="dropdown-item"><button type="button" *ngIf="logoutbtn" class="btn btn-danger" (click)="logout()">
                             <fa-icon [icon]="faLogout"></fa-icon> Cerrar sesion</button></a>
                     </div>
                 </div>

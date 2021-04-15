@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angula
 import { first } from 'rxjs/operators';
 import { ChildActivationStart, Router } from '@angular/router';
 import { ApiService } from '../api.service';
+import { utf8Encode } from '@angular/compiler/src/util';
 
 @Component({
   selector: 'app-upload-document',
@@ -21,8 +22,12 @@ export class UploadDocumentComponent implements OnInit {
   }
 
   constructor(private dataService: ApiService,private router:Router) {
-
-            }
+    
+    if(this.dataService.getTipo() == "verificador"){
+      this.router.navigate(['dashboard']);
+    }
+    
+  }
 
   ngOnInit(): void {
   }
@@ -44,39 +49,47 @@ export class UploadDocumentComponent implements OnInit {
     var binaryString = readerEvent.target.result;
     this.archivo.base64textString = btoa(binaryString);
   }
+  
 
   upload() {
+    const removeAccents = (str : any) => {
+      return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    } 
+
     if(this.archivo.size > 5242880){
       alert("No se puede subir archivos mayores a 5Mb")
     }
     else{
+      this.archivo.nombreArchivo = removeAccents(this.archivo.nombreArchivo);
+      console.log(this.archivo.nombreArchivo);
+      
       this.correo = this.dataService.getEmail();
       this.archivo.correo = this.correo;
       console.log(this.archivo);
       this.dataService.uploadFile(this.archivo).subscribe(
-        (datos : any) => {
-          if(datos['resultado'] == 'OK') {
-            alert(datos['mensaje']);
-          }
-          else{
-            alert("Error al subir archivo");
-          }
-        }
-      );
+         (datos : any) => {
+           if(datos['resultado'] == 'OK') {
+             alert(datos['mensaje']);
+           }
+           else{
+             alert("Error al subir archivo");
+           }
+         }
+       );
   
       this.nombrearchivo = this.archivo.nombreArchivo;
       
       this.dataService.registrarDocumentos(
-        this.archivo.nombreArchivo,
-        this.archivo.correo)
-        .pipe(first())
-        .subscribe(
-        data => {
-        this.router.navigate(['list-document']);
-        },
+         this.archivo.nombreArchivo,
+         this.archivo.correo)
+         .pipe(first())
+         .subscribe(
+         data => {
+         this.router.navigate(['list-document']);
+         },
     
-        error => {
-        });
+         error => {
+         });
     }
     
   }

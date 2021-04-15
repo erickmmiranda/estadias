@@ -5,7 +5,7 @@ $email = $_GET['email'];
 
 error_reporting(E_ERROR);
 $documents = [];
-$sql = "SELECT * FROM  archivos WHERE email = '$email'";
+$sql = "SELECT * FROM  archivos WHERE email = '$email' AND asignado = 0";
 
 if($result = mysqli_query($con,$sql))
 {
@@ -19,8 +19,6 @@ if($result = mysqli_query($con,$sql))
     $documents[$cr]['asignado'] = $row['asignado'];
     $cr++;
   }
-    
-    //print_r($users);
 
   echo json_encode($documents);
 }

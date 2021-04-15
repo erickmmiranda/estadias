@@ -29,6 +29,7 @@ export class AppComponent {
     administrador: any;
     nombreUsuario: any;
     correoUsuario: any;
+    notificacion : any;
     
     constructor(private dataService: ApiService, private router: Router) {
     dataService.getLoggedInName.subscribe((name: boolean) => this.changeName(name));
@@ -38,7 +39,7 @@ export class AppComponent {
         this.administrador = this.dataService.getTipo();
         this.loginbtn=false;
         this.logoutbtn=true
-    
+        this.getNotificacion();
     }
     else{
         this.loginbtn=true;
@@ -61,13 +62,22 @@ export class AppComponent {
         this.correoUsuario = this.dataService.getEmail();
     }
 
+    getNotificacion(){
+        if(this.dataService.getTipo() == "verificador"){
+            let id_usu = this.dataService.getId();
+            this.dataService.getNotificacion(id_usu).subscribe((data : any) =>{
+                this.notificacion = data[0].cantidad;
+            });
+        }
+    }
+
     logout()
     {
     this.dataService.deleteToken();
     this.dataService.deleteTipo();
     this.dataService.deleteEmail();
     this.dataService.deleteId();
-    window.location.href = window.location.href;
+    //location.href = window.location.href;
     this.router.navigate( ['/login']);
     this.administrador = "";
     }

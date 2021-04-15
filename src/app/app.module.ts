@@ -23,6 +23,10 @@ import { AsignarComponent } from './asignar/asignar.component';
 import { DocAsignadosComponent } from './doc-asignados/doc-asignados.component';
 import { DocsVerificadorComponent } from './docs-verificador/docs-verificador.component';
 import { DocsValidadosComponent } from './docs-validados/docs-validados.component';
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { DocsCheckedComponent } from './docs-checked/docs-checked.component';
+import { ItemVerificadorComponent } from './item-verificador/item-verificador.component';
+import { EstatusDocumentComponent } from './estatus-document/estatus-document.component';
 
 
 @NgModule({
@@ -45,6 +49,9 @@ import { DocsValidadosComponent } from './docs-validados/docs-validados.componen
     DocAsignadosComponent,
     DocsVerificadorComponent,
     DocsValidadosComponent,
+    DocsCheckedComponent,
+    ItemVerificadorComponent,
+    EstatusDocumentComponent,
   ],
   imports: [
     BrowserModule,
@@ -52,7 +59,8 @@ import { DocsValidadosComponent } from './docs-validados/docs-validados.componen
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MDBBootstrapModule.forRoot()
   ],
   providers: [
     ApiService

@@ -12,7 +12,7 @@
             <tbody>
                 <tr *ngFor="let doc of byUser">
                     <div *ngFor="let item of archivos">
-                        <app-item-archivo [itemInfo]="item" [documentoInfo]="doc" (cambioArchivo)="refrescar()" *ngIf="item.nombre == doc.archivo && doc.asignado == 0"></app-item-archivo>
+                        <app-item-archivo [itemInfo]="item" [documentoInfo]="doc" (cambioArchivo)="refrescar()" *ngIf="item.nombre == doc.archivo"></app-item-archivo>
                     </div>
                 </tr>
                 <tr>
@@ -32,7 +32,7 @@
                 <button type="button" [routerLink]="['/doc-asignados']" class="list-group-item btn-outline-primary">Documentos asignados</button>
             </div>
             <div class="list-group mt-4 mb-4">
-                <button type="button" class="list-group-item btn-outline-primary">Documentos validados</button>
+                <button type="button" [routerLink]="['/docs-validados']" class="list-group-item btn-outline-primary">Documentos validados</button>
             </div>
 
         </div>

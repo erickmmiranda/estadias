@@ -14,6 +14,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doc-asignados',
@@ -45,8 +46,10 @@ export class DocAsignadosComponent implements OnInit {
 
   baseUrl: string = "http://localhost/estadias/php";
   
-  constructor(private dataService: ApiService, private httpClient: HttpClient) { 
-
+  constructor(private dataService: ApiService, private httpClient: HttpClient, private router : Router) { 
+    if(this.dataService.getTipo() == "verificador"){
+      this.router.navigate(['dashboard']);
+    }
   }
 
   ngOnInit(): void {
@@ -70,8 +73,6 @@ export class DocAsignadosComponent implements OnInit {
     this.email = this.dataService.getEmail() + "";
     this.dataService.getDocumentByAsignado(this.email).subscribe((data : Array<object>) => {    
       this.byUser = data;
-      console.log(data);
-      
     });
 
   }
@@ -99,5 +100,9 @@ export class DocAsignadosComponent implements OnInit {
   
       }
     
+  }
+
+  verStatus(document: any) {
+    this.router.navigate(['/estatus', document.id]);
   }
 }

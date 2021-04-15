@@ -1,0 +1,49 @@
+<table class="table">
+    <tr>
+        <td width="30%">{{itemInfo.nombre}}</td>
+        <td width="5%">
+            <fa-icon [icon]="faPdf" *ngIf="itemInfo.tipo == 'pdf'" size="2x"></fa-icon>
+            <fa-icon [icon]="faPng" *ngIf="itemInfo.tipo == 'png'" size="2x"></fa-icon>
+            <fa-icon [icon]="faDocx" *ngIf="itemInfo.tipo == 'docx'" size="2x"></fa-icon>
+            <fa-icon [icon]="faZip" *ngIf="itemInfo.tipo == 'zip'" size="2x"></fa-icon>
+            <fa-icon [icon]="faPptx" *ngIf="itemInfo.tipo == 'pptx'" size="2x"></fa-icon>
+            <fa-icon [icon]="faJpg" *ngIf="itemInfo.tipo == 'jpg'" size="2x"></fa-icon>
+            <fa-icon [icon]="faExcel" *ngIf="itemInfo.tipo == 'xlsx'" size="2x"></fa-icon>
+
+        </td>
+        <td width="10%">{{itemInfo.size}}</td>
+        <td width="10%"class="text-center">
+            <a href="../../assets/docs/{{itemInfo.nombre}}" target="_blank" class="btn btn-outline-primary mr-2" (click)="setVisto(documentoInfo.id)">
+                <fa-icon [icon]="faDownload" *ngIf="itemInfo.tipo != 'pdf'" size="lg"></fa-icon>
+                <fa-icon [icon]="faView" *ngIf="itemInfo.tipo == 'pdf'" size="lg"></fa-icon>
+            </a>
+            
+        </td>
+        <td width="50%" class="text-center" *ngIf="documentoInfo.rechazado == 0">
+            <a class="btn btn-outline-success ml-2" (click)="aceptarVerificar()" *ngIf="documentoInfo.visto == 1 && !edicionActiva">
+                <fa-icon [icon]="faFileCheck" size="lg"></fa-icon> Verificar
+            </a>
+            <a class="mr-2 ml-3" *ngIf="documentoInfo.visto == 1 && !edicionActiva">|</a>
+            <a class="btn btn-outline-danger ml-2" (click)="aceptarRechazar()" *ngIf="documentoInfo.visto == 1 && !edicionActiva">
+                <fa-icon [icon]="faCancelar" size="lg"></fa-icon> Rechazar
+            </a>
+            <form [formGroup]="angForm" autocomplete="off" class="form-inline" *ngIf="edicionActiva">
+                    <div class="">
+                        <textarea [(ngModel)]="mensaje" name="comentario" formControlName="comentario" autocomplete="off" class="form-control input-sm" placeholder="Comentario"></textarea>
+                    </div>
+                    <a type="submit" class="btn btn-outline-success ml-2" (click)="verificarDocumento(angForm,documentoInfo.id)" *ngIf="verificar">
+                        <fa-icon [icon]="faFileCheck" size="lg"></fa-icon> Enviar
+                    </a>
+                    <a class="btn btn-outline-danger ml-2" (click)="cancelarVerificar()" *ngIf="verificar">
+                        <fa-icon [icon]="faCancelar" size="lg"></fa-icon> Cancelar
+                    </a>
+                    <a type="submit" class="btn btn-outline-success ml-2" (click)="rechazarDocumento(angForm,documentoInfo.id)" *ngIf="rechazar">
+                        <fa-icon [icon]="faFileCheck" size="lg"></fa-icon> Enviar
+                    </a>
+                    <a class="btn btn-outline-danger ml-2" (click)="cancelarRechazar()" *ngIf="rechazar">
+                        <fa-icon [icon]="faCancelar" size="lg"></fa-icon> Cancelar
+                    </a>
+            </form>    
+        </td>
+    </tr>
+</table>

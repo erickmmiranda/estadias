@@ -46,7 +46,11 @@
                                 <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="desactivarEdicion()" *ngIf="edicionActiva">
                                     <fa-icon [icon]="faDelete"></fa-icon> Cancelar</a> -->
                             </td>
-                            <td width="10%">{{ doc.validados }} / {{doc.asignados}}</td>
+                            <td width="10%">
+                                <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="verStatus(doc)" *ngIf="tipoUsu != 'verificador'">
+                                    Status
+                                </a>
+                            </td>
                             <td width="10%"class="text-center">
                                 <a href="javascript:void(0);" class="btn btn-outline-danger" (click)="borrar(itemInfo, doc.id)" *ngIf="tipoUsu != 'verificador'">
                                     <fa-icon [icon]="faDelete" size="lg"></fa-icon>

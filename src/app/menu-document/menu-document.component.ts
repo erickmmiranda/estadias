@@ -41,7 +41,7 @@ export class MenuDocumentComponent implements OnInit {
   }
   docValidados()
   {
-    this.router.navigate( ['/doc-validados']);
+    this.router.navigate( ['/docs-validados']);
   }
 
   tipoUsuarario(){
@@ -51,5 +51,10 @@ export class MenuDocumentComponent implements OnInit {
   docVerificador()
   {
     this.router.navigate( ['/doc-verificador']);
+  }
+
+  docsChecked()
+  {
+    this.router.navigate( ['/docs-verificados']);
   }
 }

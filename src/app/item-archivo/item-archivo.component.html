@@ -28,10 +28,6 @@
                 <fa-icon [icon]="faDownload" *ngIf="itemInfo.tipo != 'pdf'" size="lg"></fa-icon>
                 <fa-icon [icon]="faView" *ngIf="itemInfo.tipo == 'pdf'" size="lg"></fa-icon>
             </a>
-            <a *ngIf="tipo == 'verificador'"> | </a>
-            <a class="btn btn-outline-success" *ngIf="tipo == 'verificador'">
-                <fa-icon [icon]="faFileCheck" size="lg"></fa-icon>
-            </a>
             <a *ngIf="tipo == 'normal'"> | </a>
             <a class="btn btn-outline-warning" *ngIf="tipo == 'normal'" (click)="asignarDocumento(documentoInfo)">
                 <fa-icon [icon]="share" size="lg"></fa-icon>

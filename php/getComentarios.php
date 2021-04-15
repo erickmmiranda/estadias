@@ -5,18 +5,18 @@ $id = $_GET['id'];
 
 error_reporting(E_ERROR);
 $documents = [];
-$sql = "SELECT a.id,a.archivo,asig.validacion,asig.rechazado, asig.visto from archivos as a, asignados as asig WHERE asig.id_usuario = $id AND a.id = asig.id_documento";
+$sql = "SELECT u.nombre, u.apellidos, a.comentario, a.validacion, a.rechazado from users as u, asignados as a WHERE a.id_documento = $id and a.id_usuario = u.id  AND comentario != ''";
 
 if($result = mysqli_query($con,$sql))
 {
   $cr = 0;
   while($row = mysqli_fetch_assoc($result))
   {
-    $documents[$cr]['id']    = $row['id'];
-    $documents[$cr]['archivo'] = $row['archivo'];
+    $documents[$cr]['nombre'] = $row['nombre'];
+    $documents[$cr]['apellidos'] = $row['apellidos'];
+    $documents[$cr]['comentario'] = $row['comentario'];
     $documents[$cr]['validacion'] = $row['validacion'];
     $documents[$cr]['rechazado'] = $row['rechazado'];
-    $documents[$cr]['visto'] = $row['visto'];
     $cr++;
   }
 

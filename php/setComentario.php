@@ -5,13 +5,11 @@
     {
         $request = json_decode($postdata);
         
-        $id_doc = mysqli_real_escape_string($mysqli, trim($request->id_doc));
-        $id_usu = mysqli_real_escape_string($mysqli, trim($request->id_usu));
-        $val = mysqli_real_escape_string($mysqli, trim($request->val));
-        $comentario = mysqli_real_escape_string($mysqli, trim($request->comentario));
+        $id_doc = mysqli_real_escape_string($mysqli, trim($request->id_doc));;
+        $id_usu = mysqli_real_escape_string($mysqli, trim($request->id_usu));;
+        $val = mysqli_real_escape_string($mysqli, trim($request->val));;
 
-        $sql = "UPDATE asignados SET validacion =$val, comentario = '$comentario'  WHERE id_documento = $id_doc AND id_usuario = $id_usu";
-
+        $sql = "UPDATE asignados SET comentario =$val  WHERE id_documento = $id_doc AND id_usuario = $id_usu";
         if ($mysqli->query($sql) === TRUE) {
             echo json_encode(array(
                 'status' => 'ok'

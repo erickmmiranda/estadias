@@ -14,8 +14,6 @@ if($result = mysqli_query($con,$sql))
     $documents[$cr]['archivo'] = $row['archivo'];
     $documents[$cr]['fecha'] = $row['fecha'];
     $documents[$cr]['email'] = $row['email'];
-    
-    //print_r($users);
 
   echo json_encode($documents);
 }

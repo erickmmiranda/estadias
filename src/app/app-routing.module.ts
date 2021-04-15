@@ -15,6 +15,8 @@ import { AsignarComponent } from './asignar/asignar.component';
 import { DocAsignadosComponent } from './doc-asignados/doc-asignados.component';
 import { DocsVerificadorComponent } from './docs-verificador/docs-verificador.component';
 import { DocsValidadosComponent } from './docs-validados/docs-validados.component';
+import { DocsCheckedComponent } from './docs-checked/docs-checked.component';
+import { EstatusDocumentComponent } from './estatus-document/estatus-document.component';
 
 const routes: Routes = [
 { path: '', component: LoginComponent },
@@ -31,8 +33,10 @@ const routes: Routes = [
 { path: 'dashboard', component: DashboardComponent,canActivate: [AuthguardGuard] },
 { path: 'doc-asignados', component: DocAsignadosComponent,canActivate: [AuthguardGuard] },
 { path: 'doc-verificador', component: DocsVerificadorComponent,canActivate: [AuthguardGuard] },
-{ path: 'docs-validados', component: DocsValidadosComponent,canActivate: [AuthguardGuard] }
-]
+{ path: 'docs-validados', component: DocsValidadosComponent,canActivate: [AuthguardGuard] },
+{ path: 'docs-verificados', component: DocsCheckedComponent,canActivate: [AuthguardGuard] },
+{ path: 'estatus/:id', component: EstatusDocumentComponent,canActivate: [AuthguardGuard] }
+];
 
 @NgModule({
 imports: [RouterModule.forRoot(routes)],

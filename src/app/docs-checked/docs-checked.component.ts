@@ -1,15 +1,15 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { faFilePdf, faFileArchive, faFileImage, faFilePowerpoint, faFileWord, faTrashAlt, faEdit, faPlusCircle, faFileExcel, faCheckCircle, faEye, faDownload, faShareAlt, faMinusCircle} from '@fortawesome/free-solid-svg-icons';
 import { ApiService } from '../api.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-docs-verificador',
-  templateUrl: './docs-verificador.component.html',
-  styleUrls: ['./docs-verificador.component.css']
+  selector: 'app-docs-checked',
+  templateUrl: './docs-checked.component.html',
+  styleUrls: ['./docs-checked.component.css']
 })
-export class DocsVerificadorComponent implements OnInit {
+export class DocsCheckedComponent implements OnInit {
 
   faPdf = faFilePdf;
   faZip = faFileArchive;
@@ -36,9 +36,9 @@ export class DocsVerificadorComponent implements OnInit {
   baseUrl:string = "http://localhost/estadias/php";
   
   constructor(private dataService: ApiService, private httpClient: HttpClient, private router : Router) { 
-                if(this.dataService.getTipo() != "verificador"){
-                  this.router.navigate(['dashboard']);
-                }
+    if(this.dataService.getTipo() != "verificador"){
+      this.router.navigate(['dashboard']);
+    }
   }
 
   ngOnInit(): void {
@@ -54,13 +54,13 @@ export class DocsVerificadorComponent implements OnInit {
   }  
 
   refrescar(){
-    this.getDocuments();
+    this.getDocuments
     this.peticionDocumentos();
   }
 
   getDocuments(){
     this.id = this.dataService.getId();
-    this.dataService.getDocumentByVerificador(this.id).subscribe((data : Array<object>) =>{  
+    this.dataService.getDocumentByVerificador(this.id).subscribe((data : Array<object>) =>{    
       this.byUser = data;
     });
 
@@ -69,6 +69,4 @@ export class DocsVerificadorComponent implements OnInit {
   getTipoUsu(){
     this.tipoUsu = this.dataService.getTipo();
   }
-
-
 }

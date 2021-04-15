@@ -14,6 +14,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { faDownload } from '@fortawesome/free-solid-svg-icons';
 import { faShareAlt } from '@fortawesome/free-solid-svg-icons';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-docs-validados',
@@ -45,7 +46,11 @@ export class DocsValidadosComponent implements OnInit {
 
   baseUrl: string = "http://localhost/estadias/php";
   
-  constructor(private dataService: ApiService, private httpClient: HttpClient) { 
+  constructor(private dataService: ApiService, private httpClient: HttpClient, private router : Router) { 
+
+    if(this.dataService.getTipo() == "verificador"){
+      this.router.navigate(['dashboard']);
+    }
 
   }
 
@@ -70,8 +75,6 @@ export class DocsValidadosComponent implements OnInit {
     this.email = this.dataService.getEmail() + "";
     this.dataService.getDocumentByAsignado(this.email).subscribe((data : Array<object>) => {    
       this.byUser = data;
-      console.log(data);
-      
     });
 
   }

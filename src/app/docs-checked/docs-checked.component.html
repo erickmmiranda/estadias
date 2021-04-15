@@ -1,0 +1,44 @@
+<div class="container animated fadeIn">
+    <div class="row">
+        <div class="col-md-12">
+            <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
+        <h2 class="text-center mt-2 mb-3">Documentos verificados</h2>
+        <table class="table">
+            <thead>
+                <tr class="bg-dark text-white">
+                    <th colspan="6">Nombre</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let doc of byUser">
+                    <div *ngFor="let itemInfo of archivos">
+                        <div *ngIf="itemInfo.nombre == doc.archivo && doc.validacion == 1">  
+                            <td width="50%">{{itemInfo.nombre}}</td>
+                            <td width="10%">
+                                <fa-icon [icon]="faPdf" *ngIf="itemInfo.tipo == 'pdf'" size="2x"></fa-icon>
+                                <fa-icon [icon]="faPng" *ngIf="itemInfo.tipo == 'png'" size="2x"></fa-icon>
+                                <fa-icon [icon]="faDocx" *ngIf="itemInfo.tipo == 'docx'" size="2x"></fa-icon>
+                                <fa-icon [icon]="faZip" *ngIf="itemInfo.tipo == 'zip'" size="2x"></fa-icon>
+                                <fa-icon [icon]="faPptx" *ngIf="itemInfo.tipo == 'pptx'" size="2x"></fa-icon>
+                                <fa-icon [icon]="faJpg" *ngIf="itemInfo.tipo == 'jpg'" size="2x"></fa-icon>
+                                <fa-icon [icon]="faExcel" *ngIf="itemInfo.tipo == 'xlsx'" size="2x"></fa-icon>
+                            </td>
+                            <td width="10%">{{itemInfo.size}}</td>
+                            <td width="30%"class="text-center">
+                                <a href="../../assets/docs/{{itemInfo.nombre}}" target="_blank" class="btn btn-outline-primary mr-2">
+                                    <fa-icon [icon]="faDownload" *ngIf="itemInfo.tipo != 'pdf'" size="lg"></fa-icon>
+                                    <fa-icon [icon]="faView" *ngIf="itemInfo.tipo == 'pdf'" size="lg"></fa-icon>
+                                </a>
+                            </td>
+                            <td width="5%"class="text-center">
+                            </td>
+                        </div>
+                    </div>
+                    
+                </tr> 
+            </tbody>
+        </table>
+        </div>
+    </div>
+    
+</div>

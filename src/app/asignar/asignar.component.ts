@@ -18,6 +18,10 @@ export class AsignarComponent implements OnInit {
   baseUrl:string = "http://localhost/estadias/php";
 
   constructor(private routes: ActivatedRoute, private dataService: ApiService, private fb: FormBuilder, private httpClient: HttpClient, private router: Router) {
+    if(this.dataService.getTipo() == "verificador"){
+      this.router.navigate(['dashboard']);
+    }
+    
     this.form = this.fb.group({
       checkArray : this.fb.array([])
     })
