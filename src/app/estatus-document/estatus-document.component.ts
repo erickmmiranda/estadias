@@ -14,6 +14,9 @@ export class EstatusDocumentComponent implements OnInit {
   documento: any;
   comentarios : any;
   personas : any;
+  validacionces : any;
+  rechazos : any;
+  asignadas : any;
 
   nombreDoc : any;
   fecha : any;
@@ -38,6 +41,9 @@ export class EstatusDocumentComponent implements OnInit {
     this.dataService.obtenerDocumentById(this.id).subscribe((data: any) => {
       this.nombreDoc = data[0].archivo;
       this.fecha = data[0].fecha;
+      this.validacionces = data[0].validacion;
+      this.rechazos = data[0].rechazado;
+      this.asignadas = data[0].usuarios;
     });
   }
 

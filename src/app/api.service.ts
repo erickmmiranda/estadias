@@ -15,6 +15,7 @@ export class ApiService {
 baseUrl:string = "http://localhost/estadias/php";
 @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
 @Output() getAdministrator: EventEmitter<any> = new EventEmitter();
+@Output() enviarNotificacion: EventEmitter<any> = new EventEmitter();
 constructor(private httpClient: HttpClient) { }
 
 
@@ -26,6 +27,11 @@ this.setEmail(Users[0].email);
 this.setTipo(Users[0].tipo);
 this.setToken(Users[0].nombre);
 this.setId(Users[0].id);
+let notificacion : any;
+this.getNotificacion(Users[0].id).subscribe((data: any) =>{
+ notificacion = data.cantidad;
+});
+this.enviarNotificacion.emit(notificacion);
 if(this.tipo == "administrator"){
     this.getAdministrator.emit(this.tipo);
 }

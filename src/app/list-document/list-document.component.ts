@@ -25,7 +25,7 @@ export class ListDocumentComponent implements OnInit {
     }
   }
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.getDocuments();
     this.peticionDocumentos();
     this.getTipoUsu();

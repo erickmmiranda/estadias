@@ -5,7 +5,7 @@ $id = $_GET['id'];
 
 error_reporting(E_ERROR);
 
-$sql = "SELECT count(id_usuario) as cantidad FROM asignados WHERE id_usuario = $id and validacion = 0";
+$sql = "SELECT count(id_usuario) as cantidad FROM asignados WHERE id_usuario = $id and comentario = ''";
 
 if($result = mysqli_query($con,$sql))
 {

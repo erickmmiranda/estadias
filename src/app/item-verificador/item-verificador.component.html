@@ -45,5 +45,12 @@
                     </a>
             </form>    
         </td>
+
+        <td width="50%" class="text-center" *ngIf="documentoInfo.rechazado == 1">
+              <a  class="alert alert-danger" role="alert">
+                <mdb-icon fas icon="exclamation-triangle"></mdb-icon>
+                  Rechazaste este documento
+              </a>
+        </td>     
     </tr>
 </table>

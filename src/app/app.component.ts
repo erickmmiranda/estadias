@@ -34,6 +34,7 @@ export class AppComponent {
     constructor(private dataService: ApiService, private router: Router) {
     dataService.getLoggedInName.subscribe((name: boolean) => this.changeName(name));
     dataService.getAdministrator.subscribe((administrador : string) => this.changeAdministrador(administrador));
+    dataService.enviarNotificacion.subscribe((data : any) => this.getNotificacion());
     if(this.dataService.isLoggedIn())
     {
         this.administrador = this.dataService.getTipo();
@@ -77,7 +78,7 @@ export class AppComponent {
     this.dataService.deleteTipo();
     this.dataService.deleteEmail();
     this.dataService.deleteId();
-    //location.href = window.location.href;
+    location.href = window.location.href;
     this.router.navigate( ['/login']);
     this.administrador = "";
     }

@@ -14,10 +14,17 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td width="20%"><strong class="mr-3">Archivo: </strong>  {{ nombreDoc }}</td>
+                                <td width="20%"colspan = 2><strong class="mr-3">Archivo: </strong>  {{ nombreDoc }}</td>
                             </tr>
                             <tr>
-                                <td width="0%"><strong class="mr-3">Fecha de creacion: </strong> {{ fecha }}</td>
+                                <td width="0%" colspan = 2><strong class="mr-3">Fecha de creacion: </strong> {{ fecha }}</td>
+                            </tr>
+                            <tr>
+                                <td width="0%" colspan = 2><strong class="mr-3">Cant. personas asignadas: </strong> {{ asignadas}}</td>
+                            </tr>
+                            <tr>
+                                <td width="0%"><strong class="mr-3">Verificados </strong> {{ validacionces}}</td>
+                                <td width="0%"><strong class="mr-3">Rechazos: </strong> {{ rechazos }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -42,7 +49,7 @@
                         </mdb-card-text>     
                         </mdb-card-body>
                         <div class="card-footer text-muted text-center white-text" style="background: rgb(42, 187, 42);" *ngIf="item.validacion == 1">
-                            Verificada
+                            Verificado
                         </div>
                         <div class="card-footer text-muted text-center white-text" style="background: rgb(255, 72, 72);" *ngIf="item.rechazado == 1">
                             Rechazado
@@ -65,6 +72,8 @@
                         <div class=" mt-3">              
                             <li *ngFor="let item of personas">
                                 {{ item.nombre }} {{ item.apellidos }}
+                                <mdb-icon class="ml-3" *ngIf="item.visto == 1" size="lg" far icon="eye"></mdb-icon>
+                                <hr>
                             </li>
                         </div>
                     </div>
