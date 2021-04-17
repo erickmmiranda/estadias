@@ -28,20 +28,24 @@
                 <fa-icon [icon]="faCancelar" size="lg"></fa-icon> Rechazar
             </a>
             <form [formGroup]="angForm" autocomplete="off" class="form-inline" *ngIf="edicionActiva">
-                    <div class="">
+                    <div class="" *ngIf="!validarcomen">
                         <textarea [(ngModel)]="mensaje" name="comentario" formControlName="comentario" autocomplete="off" class="form-control input-sm" placeholder="Comentario"></textarea>
                     </div>
+                    <div *ngIf="validarcomen">
+                        <textarea [(ngModel)]="mensaje" name="comentario" formControlName="comentario" autocomplete="off" class="form-control input-sm validarComen" placeholder="Comentario"></textarea>
+                        <p class="validartext">Campo requerido</p>
+                    </div>
                     <a type="submit" class="btn btn-outline-success ml-2" (click)="verificarDocumento(angForm,documentoInfo.id)" *ngIf="verificar">
-                        <fa-icon [icon]="faFileCheck" size="lg"></fa-icon> Enviar
+                        <mdb-icon fas icon="check" size="lg"></mdb-icon>Aprobar
                     </a>
                     <a class="btn btn-outline-danger ml-2" (click)="cancelarVerificar()" *ngIf="verificar">
-                        <fa-icon [icon]="faCancelar" size="lg"></fa-icon> Cancelar
+                        <mdb-icon fas icon="times" size="lg"></mdb-icon> Cancelar
                     </a>
                     <a type="submit" class="btn btn-outline-success ml-2" (click)="rechazarDocumento(angForm,documentoInfo.id)" *ngIf="rechazar">
-                        <fa-icon [icon]="faFileCheck" size="lg"></fa-icon> Enviar
+                        <mdb-icon fas icon="check" size="lg"></mdb-icon> Rechazar
                     </a>
                     <a class="btn btn-outline-danger ml-2" (click)="cancelarRechazar()" *ngIf="rechazar">
-                        <fa-icon [icon]="faCancelar" size="lg"></fa-icon> Cancelar
+                        <mdb-icon fas icon="times" size="lg"></mdb-icon> Cancelar
                     </a>
             </form>    
         </td>

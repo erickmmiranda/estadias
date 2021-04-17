@@ -39,7 +39,6 @@ export class ItemVerificadorComponent implements OnInit {
   faDownload = faDownload;
   faCancelar = faMinusCircle;
   share = faShareAlt;
-  alert : any;
 
   tipo : any;
 
@@ -54,8 +53,7 @@ export class ItemVerificadorComponent implements OnInit {
 
   modeloItem! : string;
 
-  validar_n: boolean = false;
-  campo_n : boolean = true;
+  validarcomen: boolean = false;
 
   mensaje! : string;
 
@@ -76,7 +74,7 @@ export class ItemVerificadorComponent implements OnInit {
     }
     
     this.angForm = this.fb.group({
-      comentario: ['', [Validators.required,Validators.minLength(1)]]
+      comentario: ['', [Validators.required]]
       });
 
   }
@@ -92,23 +90,29 @@ export class ItemVerificadorComponent implements OnInit {
   aceptarVerificar(){
     this.edicionActiva = true;
     this.verificar = true;
+    this.mensaje = "";
+    this.validarcomen = false;
   }
 
   aceptarRechazar(){
     this.edicionActiva = true;
     this.rechazar = true;
+    this.mensaje = "";
+    this.validarcomen = false;
   }
 
   cancelarVerificar(){
     this.edicionActiva = false;
     this.verificar = false;
     this.mensaje = "";
+    this.validarcomen = false;
   }
 
   cancelarRechazar(){
     this.edicionActiva = false;
     this.rechazar = false;
     this.mensaje = "";
+    this.validarcomen = false;
   }
 
   setVisto(id_doc: any){
@@ -120,18 +124,19 @@ export class ItemVerificadorComponent implements OnInit {
 
   verificarDocumento(angForm1: { value: { comentario: any; }; }, id_doc : any)
     {
-      if(angForm1.value.comentario ==""){
-        alert("El campo es requerido");
+      let alert : any;
+      if(angForm1.value.comentario == ""){
+        this.validarcomen = true;
       }
-      else{
-        this.alert = confirm("¿Quieres verificar este documento?")
-        if(this.alert == true){
+      else if(angForm1.value.comentario != ""){
+        alert = confirm("¿Quieres verificar este documento?")
+        if(alert == true){
           let id_usu : any = this.dataService.getId();
           this.dataService.validarDocumento(id_doc,id_usu,1,angForm1.value.comentario).subscribe((data : any) =>{
             location.reload();
           });
         }
-        else if(this.alert == false){
+        else if(alert == false){
           this.cancelarVerificar();
         }
       }         
@@ -139,19 +144,20 @@ export class ItemVerificadorComponent implements OnInit {
 
     rechazarDocumento(angForm1: { value: { comentario: any; }; }, id_doc : any)
     {
-      if(angForm1.value.comentario ==""){
-        alert("El campo es requerido");
+      let alert : any;
+      if(angForm1.value.comentario == ""){
+        this.validarcomen = true;
       }
-      else{
-        this.alert = confirm("¿Quieres rechazar este documento?")
-        if(this.alert == true){
+      else if(angForm1.value.comentario != ""){
+        alert = confirm("¿Quieres rechazar este documento?")
+        if(alert == true){
           let id_usu : any = this.dataService.getId();
           this.dataService.rechazarDocumento(id_doc,id_usu,1,angForm1.value.comentario).subscribe((data : any) =>{
             location.reload();
           });
         }
-        else if(this.alert == false){
-          this.cancelarVerificar();
+        else if(alert == false){
+          this.cancelarRechazar();
         }
       } 
     }

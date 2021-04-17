@@ -17,6 +17,7 @@ import { DocsVerificadorComponent } from './docs-verificador/docs-verificador.co
 import { DocsValidadosComponent } from './docs-validados/docs-validados.component';
 import { DocsCheckedComponent } from './docs-checked/docs-checked.component';
 import { EstatusDocumentComponent } from './estatus-document/estatus-document.component';
+import { DocRechazadosverComponent } from './doc-rechazadosver/doc-rechazadosver.component';
 
 const routes: Routes = [
 { path: '', component: LoginComponent },
@@ -35,6 +36,7 @@ const routes: Routes = [
 { path: 'doc-verificador', component: DocsVerificadorComponent,canActivate: [AuthguardGuard] },
 { path: 'docs-validados', component: DocsValidadosComponent,canActivate: [AuthguardGuard] },
 { path: 'docs-verificados', component: DocsCheckedComponent,canActivate: [AuthguardGuard] },
+{ path: 'rechazados-verificador', component: DocRechazadosverComponent,canActivate: [AuthguardGuard] },
 { path: 'estatus/:id', component: EstatusDocumentComponent,canActivate: [AuthguardGuard] }
 ];
 

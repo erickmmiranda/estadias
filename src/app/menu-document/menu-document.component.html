@@ -39,7 +39,7 @@
                     <fa-icon [icon]="faAsignados" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="docAsignados()" type="button" class="btn btn-primary btn-block">Documentos Asignados</button>
+                    <button (click)="docAsignados()" type="button" class="btn btn-primary btn-block">Asignados</button>
                 </div>
             </div>
         </div>
@@ -49,7 +49,7 @@
                     <fa-icon [icon]="faCheck" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="docValidados()" type="button" class="btn btn-primary btn-block">Documentos Validados</button>
+                    <button (click)="docValidados()" type="button" class="btn btn-primary btn-block">Aprobados</button>
                 </div>
             </div>
         </div>
@@ -63,7 +63,7 @@
                     <fa-icon [icon]="faFiles" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="docVerificador()" type="button" class="btn btn-primary btn-block">Mis documentos</button>
+                    <button (click)="docVerificador()" type="button" class="btn btn-primary btn-block">Pendientes</button>
                 </div>
             </div>
         </div>
@@ -73,9 +73,26 @@
                     <fa-icon [icon]="faCheck" size="10x"></fa-icon>
                 </span>
                 <div class="card-body">
-                    <button (click)="docsChecked()" type="button" class="btn btn-primary btn-block">Documentos verificados</button>
+                    <button (click)="docsChecked()" type="button" class="btn btn-primary btn-block">Aprobados</button>
                 </div>
             </div>
+        </div>
+        <div class="col-md-2"></div>    
+    </div>
+    <div class="row mt-5" *ngIf="tipo == 'verificador'">
+        <div class="col-md-2"></div>
+        <div class="col-md-4">
+            <div class="card">
+                <span class="text-center mt-3">
+                    <fa-icon [icon]="faFiles" size="10x"></fa-icon>
+                </span>
+                <div class="card-body">
+                    <button (click)="docVerificadorRechazados()" type="button" class="btn btn-primary btn-block">Rechazados</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+
         </div>
         <div class="col-md-2"></div>    
     </div>

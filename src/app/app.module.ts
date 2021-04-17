@@ -27,6 +27,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { DocsCheckedComponent } from './docs-checked/docs-checked.component';
 import { ItemVerificadorComponent } from './item-verificador/item-verificador.component';
 import { EstatusDocumentComponent } from './estatus-document/estatus-document.component';
+import { DocRechazadosverComponent } from './doc-rechazadosver/doc-rechazadosver.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { EstatusDocumentComponent } from './estatus-document/estatus-document.co
     DocsCheckedComponent,
     ItemVerificadorComponent,
     EstatusDocumentComponent,
+    DocRechazadosverComponent,
   ],
   imports: [
     BrowserModule,

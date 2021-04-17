@@ -5,7 +5,7 @@ $id = $_GET['id'];
 
 error_reporting(E_ERROR);
 $documents = [];
-$sql = "SELECT a.id,a.archivo,asig.validacion,asig.rechazado, asig.visto from archivos as a, asignados as asig WHERE asig.id_usuario = $id AND a.id = asig.id_documento";
+$sql = "SELECT a.id,a.archivo,asig.validacion,asig.rechazado,asig.visto from archivos as a, asignados as asig WHERE asig.id_usuario = $id AND a.id = asig.id_documento";
 
 if($result = mysqli_query($con,$sql))
 {

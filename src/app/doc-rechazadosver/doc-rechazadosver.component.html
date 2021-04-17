@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
-        <h2 class="text-center mt-2 mb-3">Documentos verificados</h2>
+        <h2 class="text-center mt-2 mb-3">Documentos Rechazados</h2>
         <table class="table">
             <thead>
                 <tr class="bg-dark text-white">
@@ -12,7 +12,7 @@
             <tbody>
                 <tr *ngFor="let doc of byUser">
                     <div *ngFor="let itemInfo of archivos">
-                        <div *ngIf="itemInfo.nombre == doc.archivo && doc.validacion == 1">  
+                        <div *ngIf="itemInfo.nombre == doc.archivo && doc.rechazado == 1">  
                             <td width="50%">{{itemInfo.nombre}}</td>
                             <td width="10%">
                                 <fa-icon [icon]="faPdf" *ngIf="itemInfo.tipo == 'pdf'" size="2x"></fa-icon>

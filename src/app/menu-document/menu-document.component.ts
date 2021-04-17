@@ -52,6 +52,11 @@ export class MenuDocumentComponent implements OnInit {
   {
     this.router.navigate( ['/doc-verificador']);
   }
+  
+  docVerificadorRechazados()
+  {
+    this.router.navigate( ['/rechazados-verificador']);
+  }
 
   docsChecked()
   {
