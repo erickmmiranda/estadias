@@ -29,6 +29,8 @@ import { ItemVerificadorComponent } from './item-verificador/item-verificador.co
 import { EstatusDocumentComponent } from './estatus-document/estatus-document.component';
 import { DocRechazadosverComponent } from './doc-rechazadosver/doc-rechazadosver.component';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 @NgModule({
   declarations: [
@@ -65,7 +67,8 @@ import { DocRechazadosverComponent } from './doc-rechazadosver/doc-rechazadosver
     MDBBootstrapModule.forRoot()
   ],
   providers: [
-    ApiService
+    ApiService,
+    { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]
 })
