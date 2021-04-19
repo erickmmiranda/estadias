@@ -62,6 +62,8 @@ export class DocsVerificadorComponent implements OnInit {
     this.id = this.dataService.getId();
     this.dataService.getDocumentByVerificador(this.id).subscribe((data : Array<object>) =>{  
       this.byUser = data;
+      console.log(data);
+      
     });
 
   }

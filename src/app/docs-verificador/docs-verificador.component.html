@@ -12,7 +12,7 @@
             <tbody>
                 <tr *ngFor="let doc of byUser">
                     <div *ngFor="let itemInfo of archivos">
-                        <div *ngIf="itemInfo.nombre == doc.archivo && doc.validacion == 0 && doc.rechazado == 0">
+                        <div *ngIf="itemInfo.nombre == doc.archivo && doc.validacion == 0 && doc.rechazado == 0 && doc.cancelar == 0">
                             <app-item-verificador [itemInfo]="itemInfo" [documentoInfo]="doc" (actualizar)="refrescar()"></app-item-verificador>
                         </div>
                     </div>  

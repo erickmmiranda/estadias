@@ -132,13 +132,13 @@ public getPersonasAsignadas(id_doc: any){
 
 //token
 setToken(token: string) {
-    localStorage.setItem('token', token);
+    sessionStorage.setItem('token', token);
 }
 getToken() {
-    return localStorage.getItem('token');
+    return sessionStorage.getItem('token');
 }
 deleteToken() {
-    localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
 }
 isLoggedIn() {
     const usertoken = this.getToken();
@@ -151,37 +151,37 @@ isLoggedIn() {
 // Tipo
 
 setTipo(tipo : string){
-    localStorage.setItem('tipo', tipo);
+    sessionStorage.setItem('tipo', tipo);
 }
 getTipo(){
-    return localStorage.getItem('tipo');
+    return sessionStorage.getItem('tipo');
 }
 deleteTipo(){
-    localStorage.removeItem('tipo');
+    sessionStorage.removeItem('tipo');
 }
 
 // Email
 
 setEmail(email : string){
-    localStorage.setItem('email', email);
+    sessionStorage.setItem('email', email);
 }
 getEmail(){
-    return localStorage.getItem('email');
+    return sessionStorage.getItem('email');
 }
 deleteEmail(){
-    localStorage.removeItem('email');
+    sessionStorage.removeItem('email');
 }
 
 // Email
 
 setId(id : string){
-    localStorage.setItem('id', id);
+    sessionStorage.setItem('id', id);
 }
 getId(){
-    return localStorage.getItem('id');
+    return sessionStorage.getItem('id');
 }
 deleteId(){
-    localStorage.removeItem('id');
+    sessionStorage.removeItem('id');
 }
 
 

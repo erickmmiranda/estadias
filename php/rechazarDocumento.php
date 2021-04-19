@@ -11,8 +11,10 @@
         $comentario = mysqli_real_escape_string($mysqli, trim($request->comentario));
 
         $sql = "UPDATE asignados SET rechazado =$val, comentario = '$comentario'  WHERE id_documento = $id_doc AND id_usuario = $id_usu";
+        $sql2 = "UPDATE asignados SET cancelar = 1 WHERE id_documento = $id_doc";
         
         if ($mysqli->query($sql) === TRUE) {
+            $mysqli->query($sql2);
             echo json_encode(array(
                 'status' => 'ok'
             ));

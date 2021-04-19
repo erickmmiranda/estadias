@@ -73,6 +73,8 @@ export class DocAsignadosComponent implements OnInit {
     this.email = this.dataService.getEmail() + "";
     this.dataService.getDocumentByAsignado(this.email).subscribe((data : Array<object>) => {    
       this.byUser = data;
+      console.log(data);
+      
     });
 
   }

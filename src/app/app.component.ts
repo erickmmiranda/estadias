@@ -81,6 +81,7 @@ export class AppComponent {
     location.href = window.location.href;
     this.router.navigate( ['/login']);
     this.administrador = "";
+    location.reload();
     }
 
     

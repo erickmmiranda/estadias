@@ -1,6 +1,6 @@
 <div class="container animated fadeIn">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <hr class="mt-4" color="#FF6347" style="height: 5px; width: 100%;">
         <h2 class="text-center mt-2 mb-3">Documentos asignados</h2>
         <table class="table">
@@ -13,7 +13,7 @@
                     <div *ngFor="let itemInfo of archivos">
                         <div *ngIf="itemInfo.nombre == doc.archivo && doc.asignado == 1">
                            
-                            <td width="50%">{{itemInfo.nombre}}</td>
+                            <td width="30%">{{itemInfo.nombre}}</td>
                             <!-- <td *ngIf="edicionActiva" width="40%">
                                 <input type="text" name="" [(ngModel)]="modeloItem" autocomplete="off" class="form-control input-sm" placeholder="Nombre archivo">
                             </td> -->
@@ -29,8 +29,8 @@
                     
                             </td>
                     
-                            <td width="15%">{{itemInfo.size}}</td>
-                            <td width="15%"class="text-center">
+                            <td width="12%">{{itemInfo.size}}</td>
+                            <td width="10%"class="text-center">
                                 <!-- <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="activarEdicion(itemInfo.nombre)" *ngIf="!edicionActiva">
                                     <fa-icon [icon]="faEdit"></fa-icon> Renombrar</a>
                                 <a *ngIf="!edicionActiva"> | </a> -->
@@ -45,6 +45,13 @@
                                 <a *ngIf="edicionActiva"> | </a>
                                 <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="desactivarEdicion()" *ngIf="edicionActiva">
                                     <fa-icon [icon]="faDelete"></fa-icon> Cancelar</a> -->
+                            </td>
+
+                            <td width="28%"class="text-center" >
+                                <a class="alert alert-danger" role="alert" *ngIf="doc.rechazo >= 1">
+                                    <mdb-icon fas icon="exclamation-triangle"></mdb-icon>
+                                      Rechazado
+                                </a>
                             </td>
                             <td width="10%">
                                 <a href="javascript:void(0);" class="btn btn-outline-warning" (click)="verStatus(doc)" *ngIf="tipoUsu != 'verificador'">
@@ -62,21 +69,6 @@
                 </tr> 
             </tbody>
         </table>
-        </div>
-        <div class="col-md-3">
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <br>
-            <div class="list-group">
-                <button type="button" [routerLink]="['/list-document']" class="list-group-item btn-outline-primary">Lista de Documentos</button>
-            </div>
-            <div class="list-group mt-4 mb-4">
-                <button type="button" [routerLink]="['/docs-validados']" class="list-group-item btn-outline-primary">Documentos validados</button>
-            </div>
-
         </div>
     </div>
     

@@ -25,12 +25,16 @@
                             </td>
                             <td width="10%">{{itemInfo.size}}</td>
                             <td width="30%"class="text-center">
+                                <a class="alert alert-danger" role="alert" *ngIf="doc.cancelar >= 1">
+                                    <mdb-icon fas icon="exclamation-triangle"></mdb-icon>
+                                      Cancelado
+                                </a>
+                            </td>
+                            <td width="10%"class="text-center">
                                 <a href="../../assets/docs/{{itemInfo.nombre}}" target="_blank" class="btn btn-outline-primary mr-2">
                                     <fa-icon [icon]="faDownload" *ngIf="itemInfo.tipo != 'pdf'" size="lg"></fa-icon>
                                     <fa-icon [icon]="faView" *ngIf="itemInfo.tipo == 'pdf'" size="lg"></fa-icon>
                                 </a>
-                            </td>
-                            <td width="5%"class="text-center">
                             </td>
                         </div>
                     </div>
